@@ -43,6 +43,7 @@ export function NavBar() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
       <nav className="relative mx-auto flex h-[72px] w-full max-w-[1720px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <div className="flex items-center gap-2.5 lg:gap-4">
@@ -124,13 +125,20 @@ export function NavBar() {
           <Menu className="h-6 w-6" />
         </button>
       </nav>
+    </header>
 
+      {/* Off-canvas layer — kept OUT of <header> because the header's
+          backdrop-blur would otherwise become this fixed box's containing
+          block (sizing it to the 72px bar). The `transform` makes this box the
+          containing block for its absolute children, and `overflow-clip` stops
+          the off-screen panel from extending the page (no horizontal scroll). */}
+      <div className="pointer-events-none fixed inset-0 z-[60] transform-gpu overflow-clip lg:hidden">
       {/* Mobile overlay */}
       <div
         onClick={() => setOpen(false)}
         className={cn(
-          "fixed inset-0 z-[60] bg-ink/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden",
-          open ? "opacity-100" : "pointer-events-none opacity-0",
+          "absolute inset-0 bg-ink/40 backdrop-blur-sm transition-opacity duration-300",
+          open ? "pointer-events-auto opacity-100" : "opacity-0",
         )}
         aria-hidden
       />
@@ -138,7 +146,7 @@ export function NavBar() {
       {/* Mobile slide-in panel */}
       <div
         className={cn(
-          "fixed right-0 top-0 z-[60] flex h-dvh w-[85%] max-w-[360px] flex-col bg-white shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden",
+          "pointer-events-auto absolute right-0 top-0 flex h-full w-[85%] max-w-[360px] flex-col bg-white shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
           open ? "translate-x-0" : "translate-x-full",
         )}
       >
@@ -323,6 +331,7 @@ export function NavBar() {
           </button>
         </div>
       </div>
-    </header>
+      </div>
+    </>
   );
 }

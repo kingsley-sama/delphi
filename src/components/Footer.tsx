@@ -55,8 +55,8 @@ export function Footer() {
   return (
     <footer className="border-t border-neutral-200 bg-white">
       <div className="mx-auto w-full max-w-[1512px] px-5 pb-10 pt-16 sm:px-8 lg:px-[100px]">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="max-w-xs">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="col-span-2 max-w-xs md:col-span-1">
             <Logo />
             <p className="mt-5 text-base text-ink-secondary">
               We support learning that shapes understanding, confidence, and a
@@ -79,7 +79,7 @@ export function Footer() {
           <FooterCol title="Quick Links" links={quickLinks} />
           <FooterCol title="Company" links={company} />
 
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h3 className="text-xl font-semibold text-ink">
               Contact Information
             </h3>
