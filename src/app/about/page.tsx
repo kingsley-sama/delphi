@@ -5,6 +5,7 @@ import { ImageText } from "@/components/sections/ImageText";
 import { ValueGrid } from "@/components/sections/ValueGrid";
 import { Stats } from "@/components/sections/Stats";
 import { Cta } from "@/components/sections/Cta";
+import { img } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "About Us — Delphi Education Hub",
@@ -40,7 +41,7 @@ export default function AboutPage() {
           "Trusted by 1,200+ students worldwide",
           "Programs across K-12, university, and professional learning",
         ]}
-        image="/images/student-1.jpg"
+        image={img("student-1.webp")}
         imageAlt="A confident student"
       />
 
@@ -50,7 +51,7 @@ export default function AboutPage() {
         badge="Our Mission"
         title="To help every learner reach their full potential"
         body="Our mission is to deliver personalized, high-quality education that adapts to each learner's needs and pace. We believe that with the right support, every student can thrive academically and beyond."
-        image="/images/learning-support.jpg"
+        image={img("learning-support.webp")}
         imageAlt="A tutor supporting a learner"
         reverse
         tinted

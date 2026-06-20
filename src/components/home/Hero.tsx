@@ -1,13 +1,13 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { ArrowCta } from "@/components/ui/ArrowCta";
+import { img } from "@/lib/images";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary-50">
       <div
-        className="absolute inset-0 opacity-60"
+        className="absolute inset-0 opacity-100"
         style={{
           backgroundImage: "url(/images/grid-bg.png)",
           backgroundSize: "cover",
@@ -27,17 +27,14 @@ export function Hero() {
             improve through teaching shaped around their needs and pace.
           </p>
           <div className="mt-8">
-            <Button href="/contact" variant="primary" className="gap-2">
-              Get Started Today
-              <ArrowUpRight className="h-5 w-5" />
-            </Button>
+            <ArrowCta href="/contact">Get Started Today</ArrowCta>
           </div>
         </div>
 
         <div className="relative">
           <div className="relative mx-auto aspect-square w-full max-w-[520px] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100">
             <Image
-              src="/images/hero-student.png"
+              src={img("hero-student.webp")}
               alt="Smiling student holding a notebook and backpack"
               fill
               priority

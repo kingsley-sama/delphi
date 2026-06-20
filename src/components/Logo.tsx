@@ -1,46 +1,41 @@
 import Link from "next/link";
+import { Rss } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 export function Logo({
   className,
-  variant = "default",
+  variant = "plain",
 }: {
   className?: string;
-  variant?: "default" | "inverse";
+  /** `nav` = green pill on desktop, bare green icon on mobile. `plain` = green icon + green text. */
+  variant?: "plain" | "nav";
 }) {
-  const textColor = variant === "inverse" ? "text-white" : "text-brand";
+  if (variant === "nav") {
+    return (
+      <Link
+        href="/"
+        aria-label="Delphi Education Hub — home"
+        className={cn(
+          "flex items-center gap-2.5 rounded-full lg:bg-brand lg:px-5 lg:py-2.5",
+          className,
+        )}
+      >
+        <Rss
+          className="h-6 w-6 shrink-0 text-brand lg:text-white"
+          strokeWidth={2.5}
+          aria-hidden
+        />
+        <span className="hidden text-lg font-bold tracking-tight text-white lg:inline">
+          Delphi Education Hub
+        </span>
+      </Link>
+    );
+  }
+
   return (
     <Link href="/" className={cn("flex items-center gap-2.5", className)}>
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        fill="none"
-        aria-hidden
-        className="shrink-0"
-      >
-        <path
-          d="M6 7c8 0 14 5.5 14 13"
-          stroke="currentColor"
-          strokeWidth="3.2"
-          strokeLinecap="round"
-          className={variant === "inverse" ? "text-accent" : "text-brand"}
-        />
-        <path
-          d="M6 14c5 0 8.5 3.4 8.5 8"
-          stroke="currentColor"
-          strokeWidth="3.2"
-          strokeLinecap="round"
-          className={variant === "inverse" ? "text-white" : "text-hover"}
-        />
-        <circle
-          cx="7.5"
-          cy="23.5"
-          r="2.8"
-          className={variant === "inverse" ? "fill-accent" : "fill-brand"}
-        />
-      </svg>
-      <span className={cn("text-lg font-bold tracking-tight", textColor)}>
+      <Rss className="h-6 w-6 shrink-0 text-brand" strokeWidth={2.5} aria-hidden />
+      <span className="text-lg font-bold tracking-tight text-brand">
         Delphi Education Hub
       </span>
     </Link>

@@ -6,6 +6,7 @@ import { Plus, Minus, Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/cn";
+import { img } from "@/lib/images";
 
 const stages = [
   {
@@ -92,7 +93,7 @@ export function LearningSupport() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
             <Image
-              src="/images/learning-support.jpg"
+              src={img("learning-support.webp")}
               alt="A tutor supporting a young learner"
               fill
               sizes="(max-width: 1024px) 90vw, 600px"

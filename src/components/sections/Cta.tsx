@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { img } from "@/lib/images";
 
 export function Cta({
   title = "Start Your Learning Journey With Us Today",
@@ -30,8 +31,8 @@ export function Cta({
           </div>
           <div className="relative min-h-[260px]">
             <Image
-              src="/images/cta-students.jpg"
-              alt="Students celebrating together"
+              src={img("cta-family.webp")}
+              alt="Father and son learning together"
               fill
               sizes="(max-width: 768px) 100vw, 600px"
               className="object-cover"

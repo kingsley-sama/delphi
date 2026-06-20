@@ -1,66 +1,91 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import {
+  REGION_EVENT,
+  REGION_STORAGE_KEY,
+} from "@/components/CountrySelector";
+import { curriculum, regions } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
-const regions = [
-  { name: "Nigeria", flag: "🇳🇬" },
-  { name: "United Kingdom", flag: "🇬🇧" },
-  { name: "Canada", flag: "🇨🇦" },
-  { name: "America", flag: "🇺🇸" },
-];
-
-const levels = [
-  "Elementary School",
-  "Middle School",
-  "High School",
-  "University Undergraduate",
-  "Postgraduate",
-  "Working Professionals",
-];
-
-const exams = [
-  "Provincial Exams",
-  "Ministerial Exams",
-  "EQAO",
-  "SSAT",
-  "ISEE",
-  "SAT",
-  "AP",
-  "IB",
-];
-
-const subjects = [
-  "Mathematics",
-  "English",
-  "Sciences",
-  "Computer Science & Coding",
-  "History",
-  "Foreign Languages",
-];
-
-function List({ items, inverse }: { items: string[]; inverse?: boolean }) {
+function CurriculumCard({
+  title,
+  items,
+  active,
+}: {
+  title: string;
+  items: string[];
+  active?: boolean;
+}) {
   return (
-    <ul className="space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex items-center gap-2.5 text-base">
-          <Check
-            className={cn("h-5 w-5 shrink-0", inverse ? "text-accent" : "text-brand")}
-          />
-          <span className={inverse ? "text-white" : "text-ink-secondary"}>
-            {item}
-          </span>
-        </li>
-      ))}
-    </ul>
+    <div
+      className={cn(
+        "rounded-[28px] p-3",
+        active
+          ? "bg-brand lg:-mt-5 lg:mb-[-1.25rem]"
+          : "border border-neutral-200 bg-primary-50",
+      )}
+    >
+      <h3
+        className={cn(
+          "px-4 pb-5 pt-4 text-2xl font-bold tracking-tight sm:text-3xl",
+          active ? "text-white" : "text-ink",
+        )}
+      >
+        {title}
+      </h3>
+      <div className="rounded-3xl bg-white p-6">
+        <ul className="space-y-4">
+          {items.map((item) => (
+            <li key={item} className="flex items-center gap-3 text-base">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ink">
+                <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
+              </span>
+              <span className="text-ink">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
 
 export function Curriculum() {
   const [active, setActive] = useState(0);
+
+  // Activate the region chosen from the navbar's country selector and bring
+  // the section into view. Handles both same-page picks (event) and arrivals
+  // from another page (stored value read on mount).
+  useEffect(() => {
+    const activate = (name: string | null) => {
+      if (!name) return;
+      const idx = regions.findIndex((r) => r.name === name);
+      if (idx < 0) return;
+      setActive(idx);
+      document
+        .getElementById("curriculum")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    try {
+      const stored = sessionStorage.getItem(REGION_STORAGE_KEY);
+      if (stored) {
+        sessionStorage.removeItem(REGION_STORAGE_KEY);
+        activate(stored);
+      }
+    } catch {
+      /* sessionStorage may be unavailable */
+    }
+
+    const onPick = (e: Event) => activate((e as CustomEvent<string>).detail);
+    window.addEventListener(REGION_EVENT, onPick);
+    return () => window.removeEventListener(REGION_EVENT, onPick);
+  }, []);
+
+  const data = curriculum[regions[active].name];
 
   return (
     <section id="curriculum" className="py-20">
@@ -88,19 +113,10 @@ export function Curriculum() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          <div className="rounded-3xl border border-neutral-200 bg-primary-50 p-7">
-            <h3 className="mb-6 text-2xl font-semibold text-ink">Levels We Cover</h3>
-            <List items={levels} />
-          </div>
-          <div className="rounded-3xl bg-brand p-7 lg:-mt-4 lg:mb-[-1rem]">
-            <h3 className="mb-6 text-2xl font-semibold text-white">Exams We Coach</h3>
-            <List items={exams} inverse />
-          </div>
-          <div className="rounded-3xl border border-neutral-200 bg-primary-50 p-7">
-            <h3 className="mb-6 text-2xl font-semibold text-ink">Subjects We Teach</h3>
-            <List items={subjects} />
-          </div>
+        <div className="mt-10 grid items-start gap-5 lg:grid-cols-3">
+          <CurriculumCard title="Levels We Cover" items={data.levels} />
+          <CurriculumCard title="Exams We Coach" items={data.exams} active />
+          <CurriculumCard title="Subjects We Teach" items={data.subjects} />
         </div>
       </Container>
     </section>

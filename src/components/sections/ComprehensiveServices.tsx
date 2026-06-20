@@ -1,39 +1,39 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
+import { ArrowCta } from "@/components/ui/ArrowCta";
+import { img } from "@/lib/images";
 
 const services = [
   {
     name: "Delphi Prep",
     href: "/prep",
-    image: "/images/prog-prep.jpg",
+    image: img("prog-prep.webp"),
     desc: "Focused preparation for major exams, admissions tests, certifications, and academic assessments across American, British, Canadian, Nigerian and international curricula.",
   },
   {
     name: "Delphi Academics",
     href: "/academics",
-    image: "/images/prog-academics.jpg",
+    image: img("prog-academics.webp"),
     desc: "Comprehensive academic support for students through tutoring, homework guidance, research support, enrichment, and learning coaching.",
   },
   {
     name: "Delphi UpSkill",
     href: "/upskill",
-    image: "/images/prog-upskill.jpg",
+    image: img("prog-upskill.webp"),
     desc: "Future-ready programs in digital skills, technology, creative disciplines, communication, and practical competencies for modern life and work.",
   },
   {
     name: "Delphi Career",
     href: "/career",
-    image: "/images/prog-career.jpg",
+    image: img("prog-career.webp"),
     desc: "Professional learning, certification, workplace skills, and career development programs designed for long-term growth and advancement.",
   },
 ];
 
 export function ComprehensiveServices() {
   return (
-    <section className="bg-primary-50 py-20">
+    <section className="bg-white py-20">
       <Container>
         <SectionHeading
           badge="Our Programs"
@@ -44,19 +44,20 @@ export function ComprehensiveServices() {
           {services.map((s) => (
             <div
               key={s.name}
-              className="grid items-center gap-6 rounded-3xl border border-neutral-200 bg-white p-5 md:grid-cols-[1.4fr_1fr] md:p-6"
+              className="grid gap-5 md:grid-cols-[1.4fr_1fr]"
             >
-              <div className="md:pr-6">
-                <h3 className="text-2xl font-semibold text-ink">{s.name}</h3>
-                <p className="mt-3 max-w-md text-base text-ink-secondary">
+              <div className="flex flex-col justify-center rounded-[28px] bg-primary-150 p-8 md:p-12">
+                <h3 className="text-3xl font-bold tracking-tight text-ink md:text-4xl">
+                  {s.name}
+                </h3>
+                <p className="mt-4 max-w-md text-base text-ink-secondary md:text-lg">
                   {s.desc}
                 </p>
-                <Button href={s.href} variant="primary" className="mt-6 gap-2">
-                  Explore Program
-                  <ArrowUpRight className="h-4 w-4" />
-                </Button>
+                <div className="mt-8">
+                  <ArrowCta href={s.href}>Explore Program</ArrowCta>
+                </div>
               </div>
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
+              <div className="relative min-h-[280px] overflow-hidden rounded-[28px]">
                 <Image
                   src={s.image}
                   alt={s.name}

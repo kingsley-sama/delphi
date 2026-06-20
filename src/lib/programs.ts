@@ -14,6 +14,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { FaqItem } from "@/components/sections/Faq";
+import { img } from "@/lib/images";
 
 export type Program = {
   slug: string;
@@ -39,7 +40,7 @@ export const programData: Record<string, Program> = {
     hero: "Exam Preparation That Builds Real Confidence",
     heroSub:
       "Focused preparation for major exams, admissions tests, certifications, and academic assessments across American, British, Canadian, Nigerian and international curricula.",
-    image: "/images/prog-prep.jpg",
+    image: img("prog-prep.webp"),
     overviewTitle: "Strategic, structured coaching for every exam",
     overviewBody:
       "We help students prepare for national, international, professional, and university entrance examinations with proven strategies, targeted practice, and personalized feedback.",
@@ -69,7 +70,7 @@ export const programData: Record<string, Program> = {
     hero: "Academic Support For Stronger, More Confident Students",
     heroSub:
       "Comprehensive academic support through tutoring, homework guidance, research support, enrichment, and learning coaching.",
-    image: "/images/prog-academics.jpg",
+    image: img("prog-academics.webp"),
     overviewTitle: "Support that keeps students academically strong",
     overviewBody:
       "From day-to-day homework to deeper subject mastery, we provide the structured support students need to stay strong and keep improving across every subject.",
@@ -99,7 +100,7 @@ export const programData: Record<string, Program> = {
     hero: "Future-Ready Skills For Modern Life And Work",
     heroSub:
       "Future-ready programs in digital skills, technology, creative disciplines, communication, and practical competencies for modern life and work.",
-    image: "/images/prog-upskill.jpg",
+    image: img("prog-upskill.webp"),
     overviewTitle: "Practical skills that matter in today's world",
     overviewBody:
       "We help learners build high-value, future-focused competencies — from technology and digital skills to creative and communication abilities that open real opportunities.",
@@ -129,7 +130,7 @@ export const programData: Record<string, Program> = {
     hero: "Guidance And Coaching For The Next Chapter",
     heroSub:
       "Professional learning, certification, workplace skills, and career development programs designed for long-term growth and advancement.",
-    image: "/images/prog-career.jpg",
+    image: img("prog-career.webp"),
     overviewTitle: "Prepare for certifications and career growth",
     overviewBody:
       "We help students, graduates, and professionals prepare for certifications and advance their careers with practical coaching, workplace skills, and clear guidance.",
