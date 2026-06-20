@@ -43,8 +43,10 @@
 html {
   scroll-behavior: smooth;
   /* Off-canvas panels (e.g. the mobile nav) park off the right edge with
-     translate-x-full; clip the root so they can't create horizontal scroll. */
-  overflow-x: hidden;
+     translate-x-full. Use `clip` (not `hidden`): it clips position:fixed
+     descendants so they can't create horizontal scroll, and it doesn't make
+     the root a scroll container, so the sticky header keeps working. */
+  overflow-x: clip;
 }
 
 body {
