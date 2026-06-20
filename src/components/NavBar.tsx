@@ -44,10 +44,13 @@ export function NavBar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
-      <nav className="mx-auto flex h-[72px] w-full max-w-[1720px] items-center justify-between px-5 sm:px-8 lg:px-12">
+      <nav className="relative mx-auto flex h-[72px] w-full max-w-[1720px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <div className="flex items-center gap-2.5 lg:gap-4">
           <Logo variant="nav" />
-          <CountrySelector />
+          {/* Mobile: the country flags sit to the right of the bar, clear of the logo; desktop: inline next to the logo. */}
+          <div className="absolute right-16 top-1/2 -translate-y-1/2 lg:static lg:right-auto lg:translate-y-0">
+            <CountrySelector />
+          </div>
         </div>
 
         {/* Desktop links */}
@@ -116,7 +119,7 @@ export function NavBar() {
           aria-label="Open menu"
           aria-expanded={open}
           onClick={() => setOpen(true)}
-          className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-neutral-200 bg-white text-brand lg:hidden"
         >
           <Menu className="h-6 w-6" />
         </button>

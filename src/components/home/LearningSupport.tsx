@@ -36,10 +36,10 @@ export function LearningSupport() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="bg-primary-50 py-20">
+    <section className="bg-primary-50 py-14 sm:py-20">
       <Container>
         <SectionHeading badge="Student Success Matters" title="Learning Support for Every Stage" />
-        <div className="mt-12 grid items-start gap-8 lg:grid-cols-2">
+        <div className="mt-8 grid items-start gap-6 sm:mt-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col gap-4">
             {stages.map((stage, i) => {
               const isOpen = open === i;

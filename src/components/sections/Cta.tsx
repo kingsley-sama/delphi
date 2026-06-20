@@ -11,7 +11,7 @@ export function Cta({
   text?: string;
 }) {
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-20">
       <Container>
         <div className="grid overflow-hidden rounded-[32px] bg-brand md:grid-cols-2">
           <div className="flex flex-col justify-center p-8 sm:p-12">
@@ -29,7 +29,7 @@ export function Cta({
               </span>
             </a>
           </div>
-          <div className="relative min-h-[260px]">
+          <div className="relative min-h-[200px] sm:min-h-[260px]">
             <Image
               src={img("cta-family.webp")}
               alt="Father and son learning together"

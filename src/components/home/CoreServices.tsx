@@ -43,14 +43,14 @@ const items = [
 
 export function CoreServices() {
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-20">
       <Container>
         <SectionHeading badge="Our Core Services" title="Personalized Learning For Every Student" />
-        <div className="mt-12 border-t border-neutral-200">
+        <div className="mt-8 border-t border-neutral-200 sm:mt-12">
           {items.map((item) => (
             <div
               key={item.title}
-              className="group grid items-center gap-2 rounded-[28px] border-b border-neutral-200 px-6 py-7 transition-colors duration-300 hover:border-transparent hover:bg-brand md:grid-cols-[1fr_auto_1.4fr] md:gap-x-6 md:px-10"
+              className="group grid items-center gap-1.5 rounded-[28px] border-b border-neutral-200 px-5 py-5 transition-colors duration-300 hover:border-transparent hover:bg-brand sm:gap-2 sm:px-6 sm:py-7 md:grid-cols-[1fr_auto_1.4fr] md:gap-x-6 md:px-10"
             >
               <h3 className="text-2xl font-semibold text-ink transition-colors duration-300 group-hover:text-white">
                 {item.title}

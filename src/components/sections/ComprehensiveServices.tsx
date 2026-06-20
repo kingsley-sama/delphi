@@ -33,20 +33,20 @@ const services = [
 
 export function ComprehensiveServices() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-14 sm:py-20">
       <Container>
         <SectionHeading
           badge="Our Programs"
           title="Comprehensive Services Built For Every Learner"
           subtitle="From personalized learning programs to practical skill development, our services are designed to support success at every stage."
         />
-        <div className="mt-12 flex flex-col gap-5">
+        <div className="mt-8 flex flex-col gap-5 sm:mt-12">
           {services.map((s) => (
             <div
               key={s.name}
               className="grid gap-5 md:grid-cols-[1.4fr_1fr]"
             >
-              <div className="flex flex-col justify-center rounded-[28px] bg-primary-150 p-8 md:p-12">
+              <div className="flex flex-col justify-center rounded-[28px] bg-primary-150 p-6 sm:p-8 md:p-12">
                 <h3 className="text-3xl font-bold tracking-tight text-ink md:text-4xl">
                   {s.name}
                 </h3>
@@ -57,7 +57,7 @@ export function ComprehensiveServices() {
                   <ArrowCta href={s.href}>Explore Program</ArrowCta>
                 </div>
               </div>
-              <div className="relative min-h-[280px] overflow-hidden rounded-[28px]">
+              <div className="relative min-h-[200px] overflow-hidden rounded-[28px] sm:min-h-[280px]">
                 <Image
                   src={s.image}
                   alt={s.name}

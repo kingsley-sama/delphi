@@ -50,23 +50,23 @@ function initials(name: string) {
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="bg-neutral-100 py-20">
+    <section id="testimonials" className="bg-neutral-100 py-14 sm:py-20">
       <Container>
         <SectionHeading
           badge="Student Experiences"
           title="What Our Students Are Saying"
           subtitle="Hear from learners who have transformed their skills, confidence, and future opportunities through our programs."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="flex flex-col justify-between rounded-3xl bg-brand p-7 text-white"
+              className="flex flex-col justify-between rounded-3xl bg-brand p-6 text-white sm:p-7"
             >
               <blockquote className="text-base leading-relaxed text-white/90">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-8 flex items-center gap-3 border-t border-white/15 pt-5">
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-white/15 pt-5 sm:mt-8">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-active">
                   {initials(t.name)}
                 </span>

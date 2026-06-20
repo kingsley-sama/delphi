@@ -43,7 +43,7 @@ export function Faq({
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faqs" className="py-20">
+    <section id="faqs" className="py-14 sm:py-20">
       <Container>
         <SectionHeading
           badge="Need Help?"
@@ -52,7 +52,7 @@ export function Faq({
         />
         <div
           className={cn(
-            "mt-12 grid items-start gap-8",
+            "mt-8 grid items-start gap-6 sm:mt-12 sm:gap-8",
             showImage && "lg:grid-cols-[0.9fr_1.1fr]",
           )}
         >

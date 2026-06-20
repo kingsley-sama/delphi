@@ -42,6 +42,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Off-canvas panels (e.g. the mobile nav) park off the right edge with
+     translate-x-full; clip the root so they can't create horizontal scroll. */
+  overflow-x: hidden;
 }
 
 body {

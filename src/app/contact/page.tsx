@@ -28,9 +28,9 @@ export default function ContactPage() {
         subtitle="Book a free consultation call or send us a message — our team typically responds within one business day."
       />
 
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1fr_1.2fr]">
             <div>
               <h2 className="text-2xl font-semibold text-ink">Contact information</h2>
               <p className="mt-3 max-w-sm text-base text-ink-secondary">

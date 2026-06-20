@@ -21,7 +21,7 @@ export function PageHero({
         style={{ backgroundImage: "url(/images/grid-bg.png)", backgroundSize: "cover" }}
         aria-hidden
       />
-      <Container className="relative flex flex-col items-center py-16 text-center lg:py-24">
+      <Container className="relative flex flex-col items-center py-12 text-center sm:py-16 lg:py-24">
         {badge && <Badge>{badge}</Badge>}
         <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl lg:text-[56px]">
           {title}

@@ -88,7 +88,7 @@ export function Curriculum() {
   const data = curriculum[regions[active].name];
 
   return (
-    <section id="curriculum" className="py-20">
+    <section id="curriculum" className="py-14 sm:py-20">
       <Container>
         <SectionHeading badge="Explore Programs" title="Choose Your Curriculum" />
 
@@ -113,7 +113,7 @@ export function Curriculum() {
           </div>
         </div>
 
-        <div className="mt-10 grid items-start gap-5 lg:grid-cols-3">
+        <div className="mt-8 grid items-start gap-5 sm:mt-10 lg:grid-cols-3">
           <CurriculumCard title="Levels We Cover" items={data.levels} />
           <CurriculumCard title="Exams We Coach" items={data.exams} active />
           <CurriculumCard title="Subjects We Teach" items={data.subjects} />

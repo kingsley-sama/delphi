@@ -24,9 +24,9 @@ export function ImageText({
   tinted?: boolean;
 }) {
   return (
-    <section className={cn("py-16", tinted && "bg-primary-50")}>
+    <section className={cn("py-12 sm:py-16", tinted && "bg-primary-50")}>
       <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-2">
+        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2">
           <div className={cn("relative aspect-[4/3] overflow-hidden rounded-3xl", reverse && "lg:order-2")}>
             <Image
               src={image}

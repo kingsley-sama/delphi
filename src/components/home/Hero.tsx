@@ -14,7 +14,7 @@ export function Hero() {
         }}
         aria-hidden
       />
-      <Container className="relative grid items-center gap-10 py-14 lg:grid-cols-2 lg:py-20">
+      <Container className="relative grid items-center gap-8 py-12 sm:py-14 lg:grid-cols-2 lg:py-20">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-primary-200 px-4 py-1.5 text-sm font-medium text-brand">
             Free trial classes and free consultation calls

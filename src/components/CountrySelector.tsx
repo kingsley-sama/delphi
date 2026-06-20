@@ -108,7 +108,7 @@ export function CountrySelector({ className }: { className?: string }) {
         {open && (
           <div
             role="listbox"
-            className="absolute left-0 top-full z-50 mt-2 w-56 rounded-2xl border border-neutral-200 bg-white p-2 shadow-xl shadow-black/5"
+            className="absolute right-0 top-full z-50 mt-2 w-56 rounded-2xl border border-neutral-200 bg-white p-2 shadow-xl shadow-black/5"
           >
             {regions.map((r, i) => (
               <button

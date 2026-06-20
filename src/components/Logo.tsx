@@ -16,16 +16,16 @@ export function Logo({
         href="/"
         aria-label="Delphi Education Hub — home"
         className={cn(
-          "flex items-center gap-2.5 rounded-full lg:bg-brand lg:px-5 lg:py-2.5",
+          "flex items-center gap-2 rounded-full bg-brand px-3.5 py-2 lg:gap-2.5 lg:px-5 lg:py-2.5",
           className,
         )}
       >
         <Rss
-          className="h-6 w-6 shrink-0 text-brand lg:text-white"
+          className="h-5 w-5 shrink-0 text-white lg:h-6 lg:w-6"
           strokeWidth={2.5}
           aria-hidden
         />
-        <span className="hidden text-lg font-bold tracking-tight text-white lg:inline">
+        <span className="text-sm font-bold tracking-tight text-white lg:text-lg">
           Delphi Education Hub
         </span>
       </Link>
