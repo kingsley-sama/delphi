@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, ChevronDown, Mail, X } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { submitContact } from "@/lib/supabase";
 
 const BOOK_CALL_EVENT = "open-book-call";
 
@@ -102,6 +103,23 @@ export function BookCallModal() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget).entries());
     setSent(true);
+
+    // Persist to Supabase. Non-blocking: the user already sees the success
+    // state, so a transient failure shouldn't surface as an error here.
+    submitContact({
+      source: "book-call",
+      first_name: (data.first_name as string) || null,
+      last_name: (data.last_name as string) || null,
+      email: data.email as string,
+      country_code: (data.country_code as string) || null,
+      phone: (data.phone as string) || null,
+      program: (data.program as string) || null,
+      call_mode: (data.call_mode as string) || null,
+      message: (data.message as string) || null,
+    }).catch(() => {
+      /* non-blocking */
+    });
+
     const webhook = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
     if (webhook) {
       try {

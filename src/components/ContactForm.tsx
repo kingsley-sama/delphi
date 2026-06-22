@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check } from "lucide-react";
+import { submitContact } from "@/lib/supabase";
 
 const programs = [
   "Delphi Prep",
@@ -13,6 +14,30 @@ const programs = [
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    setSubmitting(true);
+    setError(null);
+    try {
+      await submitContact({
+        source: "contact-form",
+        name: (data.name as string) || null,
+        email: data.email as string,
+        phone: (data.phone as string) || null,
+        program: (data.program as string) || null,
+        message: (data.message as string) || null,
+      });
+      setSent(true);
+    } catch {
+      setError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (sent) {
     return (
@@ -31,10 +56,7 @@ export function ContactForm() {
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
+      onSubmit={handleSubmit}
       className="rounded-3xl border border-neutral-200 bg-white p-6 sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
@@ -68,11 +90,17 @@ export function ContactForm() {
           className="rounded-xl border border-neutral-200 bg-neutral-100 px-4 py-3 text-base text-ink outline-none focus:border-brand"
         />
       </div>
+      {error && (
+        <p className="mt-4 text-sm text-red-600" role="alert">
+          {error}
+        </p>
+      )}
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-brand px-6 py-3.5 text-base font-medium text-white transition-colors hover:bg-hover"
+        disabled={submitting}
+        className="mt-6 w-full rounded-full bg-brand px-6 py-3.5 text-base font-medium text-white transition-colors hover:bg-hover disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Send message
+        {submitting ? "Sending..." : "Send message"}
       </button>
     </form>
   );
