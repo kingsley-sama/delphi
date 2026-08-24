@@ -19,7 +19,7 @@ export function ArrowCta({
     <div className={cn("flex items-center gap-0", className)}>
       <Link
         href={href}
-        className="inline-flex items-center rounded-full bg-brand px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-hover"
+        className="inline-flex items-center rounded-full bg-brand px-5 py-2.5 text-base font-medium text-white transition-colors hover:bg-hover"
       >
         {children}
       </Link>
@@ -27,7 +27,7 @@ export function ArrowCta({
         href={href}
         aria-hidden
         tabIndex={-1}
-        className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-brand text-white transition-colors hover:bg-hover"
+        className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-brand text-white transition-colors hover:bg-hover"
       >
         <ArrowUpRight className="h-5 w-5" />
       </Link>

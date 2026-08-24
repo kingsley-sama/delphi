@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${jakarta.variable} ${plex.variable}`}>
       <body className="flex min-h-screen flex-col bg-white text-ink">
         <NavBar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />
         <BookCallModal />
       </body>

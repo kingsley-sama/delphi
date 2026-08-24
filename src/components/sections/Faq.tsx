@@ -73,14 +73,14 @@ export function Faq({
               return (
                 <div
                   key={item.q}
-                  className="rounded-2xl border border-neutral-200 bg-neutral-100 p-5"
+                  className="rounded-2xl border border-neutral-200 bg-neutral-100 p-4 sm:p-5"
                 >
                   <button
                     type="button"
                     onClick={() => setOpen(isOpen ? -1 : i)}
                     className="flex w-full items-center justify-between gap-4 text-left"
                   >
-                    <span className="text-lg font-semibold text-ink">{item.q}</span>
+                    <span className="text-base font-normal text-ink sm:font-semibold sm:text-lg">{item.q}</span>
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand text-white">
                       {isOpen ? (
                         <Minus className="h-4 w-4" />
@@ -96,7 +96,7 @@ export function Faq({
                     )}
                   >
                     <div className="overflow-hidden">
-                      <p className="text-base text-ink-secondary">{item.a}</p>
+                      <p className="text-sm text-ink-secondary sm:text-base">{item.a}</p>
                     </div>
                   </div>
                 </div>

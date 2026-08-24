@@ -29,7 +29,7 @@ export function Cta({
               </span>
             </a>
           </div>
-          <div className="relative min-h-[200px] sm:min-h-[260px]">
+          <div className="relative hidden min-h-[200px] sm:min-h-[260px] md:block">
             <Image
               src={img("cta-family.webp")}
               alt="Father and son learning together"

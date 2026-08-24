@@ -15,10 +15,14 @@ export function PageHero({
   cta?: { label: string; href: string };
 }) {
   return (
-    <section className="relative overflow-hidden bg-primary-50">
+    <section className="relative -mt-[72px] overflow-hidden bg-primary-50 pt-[72px]">
       <div
         className="absolute inset-0 opacity-50"
         style={{ backgroundImage: "url(/images/grid-bg.png)", backgroundSize: "cover" }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white"
         aria-hidden
       />
       <Container className="relative flex flex-col items-center py-12 text-center sm:py-16 lg:py-24">

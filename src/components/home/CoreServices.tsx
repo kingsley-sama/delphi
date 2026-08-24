@@ -43,8 +43,20 @@ const items = [
 
 export function CoreServices() {
   return (
-    <section className="py-14 sm:py-20">
-      <Container>
+    <section className="relative overflow-hidden py-14 sm:py-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-primary-50 sm:h-72" aria-hidden>
+        <div
+          className="absolute inset-0 opacity-100"
+          style={{
+            backgroundImage: "url(/images/grid-bg.png)",
+            backgroundSize: "1512px auto",
+            backgroundPosition: "center top",
+            backgroundAttachment: "fixed",
+          }}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white" />
+      </div>
+      <Container className="relative">
         <SectionHeading badge="Our Core Services" title="Personalized Learning For Every Student" />
         <div className="mt-8 border-t border-neutral-200 sm:mt-12">
           {items.map((item) => (

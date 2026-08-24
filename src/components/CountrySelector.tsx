@@ -14,7 +14,7 @@ function FlagChip({ flag, className }: { flag: string; className?: string }) {
   return (
     <span
       className={cn(
-        "flex items-center justify-center overflow-hidden rounded-full bg-white leading-none ring-1 ring-neutral-200",
+        "flex items-center justify-center overflow-hidden rounded-full bg-neutral-100 leading-none",
         className,
       )}
       aria-hidden
@@ -65,7 +65,7 @@ export function CountrySelector({ className }: { className?: string }) {
   return (
     <div ref={ref} className={cn("relative", className)}>
       {/* Desktop: "Country" pill — each flag is its own button with a tooltip */}
-      <div className="hidden items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 lg:flex">
+      <div className="hidden items-center gap-2 rounded-full bg-white px-4 py-2 lg:flex">
         <span className="text-sm font-medium text-ink">Country</span>
         <span className="flex gap-1.5">
           {regions.map((r, i) => (
@@ -100,7 +100,7 @@ export function CountrySelector({ className }: { className?: string }) {
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-label="Choose a country curriculum"
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100 transition-colors hover:bg-neutral-200"
+          className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-neutral-100"
         >
           <FlagChip flag={regions[selected].flag} className="h-7 w-7 text-lg" />
         </button>
