@@ -27,13 +27,18 @@ export function Hero() {
       />
       <Container className="relative grid items-center gap-8 py-12 sm:py-14 lg:grid-cols-[1fr_1.05fr] lg:gap-0 lg:py-20">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary-200 px-4 py-1.5 text-sm font-medium text-brand">
+          <span className="inline-flex items-center gap-2 rounded-full bg-primary-150 px-4 py-2 text-[13px] font-semibold text-brand sm:gap-2.5 sm:px-5 sm:py-2.5 sm:text-sm">
+            <span className="h-2 w-2 rounded-full bg-[#22c55e]" aria-hidden />
             Free trial classes and free consultation calls
           </span>
           <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[56px]">
-            Unlock Your Potential with Personalized Online Tutoring
+            Unlock Your Potential with Personalized{" "}
+            <span className="inline-block -rotate-2 rounded-2xl bg-accent px-2 text-ink transition-transform duration-300 ease-out hover:rotate-2">
+              Online
+            </span>{" "}
+            Tutoring
           </h1>
-          <p className="mt-5 max-w-md text-lg text-ink-secondary">
+          <p className="mt-5 max-w-lg text-lg text-ink-secondary">
             We offer tutoring and academic support services to help learners
             improve through teaching shaped around their needs and pace.
           </p>
@@ -43,7 +48,7 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div className="relative mx-auto aspect-square w-full max-w-[520px] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100 lg:mx-0 lg:ml-auto">
+          <div className="relative mx-auto aspect-square w-full max-w-[520px] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100 lg:mx-0 lg:ml-auto lg:max-w-[600px]">
             <Image
               src={img("hero-student.webp")}
               alt="Smiling student holding a notebook and backpack"
@@ -53,8 +58,9 @@ export function Hero() {
               className="-translate-x-6 translate-y-6 scale-110 object-contain object-[0%_100%] sm:translate-x-0 sm:translate-y-0 sm:scale-100 sm:object-[35%_100%]"
             />
             <div className="absolute right-4 top-2 rounded-2xl bg-active px-4 py-3 text-xs text-white shadow-lg sm:top-4">
-              <p className="font-semibold">More than 1,200+ students</p>
-              <p className="text-white/70">worldwide and growing</p>
+              <p className="font-semibold">
+                <span className="text-accent">5,000+</span> hours taught
+              </p>
             </div>
             <div className="absolute right-4 top-20 flex w-[150px] flex-col items-start gap-2 rounded-2xl bg-white/90 px-2.5 py-2 text-[11px] text-ink shadow-lg backdrop-blur sm:top-28 sm:w-[205px] sm:gap-3 sm:px-3.5 sm:py-3 sm:text-xs">
               <div className="flex gap-0.5 text-amber-400">
