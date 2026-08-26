@@ -33,6 +33,41 @@
 
   /* Container */
   --breakpoint-xl: 80rem;
+
+  /* Hero entry motion. Translate/opacity only -- no scaling. `reveal-up` is a
+     masked line reveal: each word sits in an overflow-hidden wrapper and slides
+     up from beneath it. */
+  --animate-reveal-up: reveal-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes reveal-up {
+    from {
+      transform: translateY(115%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Entry animations use `both` fill, so their start frames hide content. Turning
+   the animation off (rather than overriding it) restores the resting state. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-reveal-up,
+  .animate-fade-up {
+    animation: none;
+  }
 }
 
 :root {
