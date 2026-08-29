@@ -34,8 +34,26 @@ export function ContactForm() {
       setSent(true);
     } catch {
       setError("Something went wrong. Please try again or email us directly.");
+      return;
     } finally {
       setSubmitting(false);
+    }
+
+    // Fan out to Make (scenario relays this to WhatsApp for visibility).
+    // Non-blocking: the user already sees the success state.
+    const webhook = process.env.NEXT_PUBLIC_MAKE_WEBHOOK_URL;
+    if (webhook) {
+      fetch(webhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "contact-form",
+          submitted_at: new Date().toISOString(),
+          ...data,
+        }),
+      }).catch(() => {
+        /* non-blocking */
+      });
     }
   };
 

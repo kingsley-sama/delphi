@@ -120,7 +120,9 @@ export function BookCallModal() {
       /* non-blocking */
     });
 
-    const webhook = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
+    // Fan out to Make (scenario relays this to WhatsApp for visibility).
+    // Non-blocking: the user already sees the success state.
+    const webhook = process.env.NEXT_PUBLIC_MAKE_WEBHOOK_URL;
     if (webhook) {
       try {
         await fetch(webhook, {
