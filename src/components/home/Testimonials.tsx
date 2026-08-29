@@ -1,5 +1,10 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+
+// One shared backdrop so every card reads identically. The artwork is a dark
+// green field, so the copy stays white throughout.
+const CARD_BG = "/student_experience_section/student_experience_section1.png";
 
 const testimonials = [
   {
@@ -57,28 +62,47 @@ export function Testimonials() {
           title="What Our Students Are Saying"
           subtitle="Hear from learners who have transformed their skills, confidence, and future opportunities through our programs."
         />
-        <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t) => (
+      </Container>
+      {/* Continuous right-to-left marquee, outside the Container so the track
+          spans the full viewport width on every breakpoint. The list renders
+          twice and the track shifts by half its width, so the loop is seamless.
+          Spacing uses a right margin rather than flex `gap` so each half is
+          exactly 50%. */}
+      <div className="relative mt-8 overflow-hidden sm:mt-12 motion-reduce:overflow-x-auto">
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+          {[...testimonials, ...testimonials].map((t, i) => (
             <figure
-              key={t.name}
-              className="flex flex-col justify-between rounded-3xl bg-brand p-6 text-white sm:p-7"
+              key={`${t.name}-${i}`}
+              // The second pass is decorative padding for the loop, so it is
+              // hidden from assistive tech to avoid duplicate quotes.
+              aria-hidden={i >= testimonials.length}
+              className="relative mr-4 flex w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-brand p-6 text-white sm:mr-5 sm:w-[380px] sm:p-7"
             >
-              <blockquote className="text-base leading-relaxed text-white/90">
+              <Image
+                src={CARD_BG}
+                alt=""
+                fill
+                sizes="380px"
+                className="object-cover"
+              />
+              <blockquote className="relative text-base leading-relaxed text-white/90">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-white/15 pt-5 sm:mt-8">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-active">
+              <figcaption className="relative mt-6 flex items-center gap-3 border-t border-white/15 pt-5 sm:mt-8">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-semibold text-active">
                   {initials(t.name)}
                 </span>
                 <span>
                   <span className="block text-sm font-semibold">{t.name}</span>
-                  <span className="block text-xs text-white/70">{t.country}</span>
+                  <span className="block text-xs text-white/70">
+                    {t.country}
+                  </span>
                 </span>
               </figcaption>
             </figure>
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

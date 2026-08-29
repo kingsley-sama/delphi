@@ -3,7 +3,7 @@
 @theme {
   /* Brand greens */
   --color-active: #00482f;
-  --color-brand: #006744;
+  --color-brand: #013d21;
   --color-hover: #318467;
   --color-primary-300: #a9d7c4;
   --color-primary-200: #ddf1e8;
@@ -30,6 +30,7 @@
   /* Fonts */
   --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-marker: var(--font-permanent-marker), ui-sans-serif, system-ui, sans-serif;
 
   /* Container */
   --breakpoint-xl: 80rem;
@@ -49,6 +50,19 @@
     }
   }
 
+  /* Reviews marquee. The track holds the list twice, so shifting it by half its
+     width lands exactly on the duplicate and loops seamlessly. */
+  --animate-marquee: marquee 55s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   @keyframes fade-up {
     from {
       opacity: 0;
@@ -65,7 +79,8 @@
    the animation off (rather than overriding it) restores the resting state. */
 @media (prefers-reduced-motion: reduce) {
   .animate-reveal-up,
-  .animate-fade-up {
+  .animate-fade-up,
+  .animate-marquee {
     animation: none;
   }
 }

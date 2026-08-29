@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, IBM_Plex_Sans } from "next/font/google";
+import {
+  Plus_Jakarta_Sans,
+  IBM_Plex_Sans,
+  Permanent_Marker,
+} from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
@@ -17,6 +21,13 @@ const plex = IBM_Plex_Sans({
   weight: ["400", "500", "600"],
 });
 
+// Marker face used only for the program card titles.
+const marker = Permanent_Marker({
+  variable: "--font-permanent-marker",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Delphi Education Hub — Personalized Online Tutoring",
   description:
@@ -29,7 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${plex.variable}`}>
+    <html
+      lang="en"
+      className={`${jakarta.variable} ${plex.variable} ${marker.variable}`}
+    >
       <body className="flex min-h-screen flex-col bg-white text-ink">
         <NavBar />
         <main className="flex-1 pt-[72px]">{children}</main>
