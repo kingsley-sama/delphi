@@ -10,7 +10,7 @@ const services = [
   {
     name: "Delphi Prep",
     href: "/prep",
-    image: "/personalized_tutoring/delphi-prep.png",
+    image: "/personalized_tutoring/delphi-prep.webp",
     bg: "/our_service_section/our_service_section1.jpg",
     dark: false,
     desc: "Focused preparation for major exams, admissions tests, certifications, and academic assessments across American, British, Canadian, Nigerian and international curricula.",
@@ -18,7 +18,7 @@ const services = [
   {
     name: "Delphi Academics",
     href: "/academics",
-    image: "/personalized_tutoring/delphi-academics.png",
+    image: "/personalized_tutoring/delphi-academics.webp",
     bg: "/our_service_section/our_service_section2.jpg",
     dark: false,
     desc: "Comprehensive academic support for students through tutoring, homework guidance, research support, enrichment, and learning coaching.",
@@ -26,7 +26,7 @@ const services = [
   {
     name: "Delphi UpSkill",
     href: "/upskill",
-    image: "/personalized_tutoring/delphi-upskill.png",
+    image: "/personalized_tutoring/delphi-upskill.webp",
     bg: "/our_service_section/our_service_section3.jpg",
     dark: false,
     desc: "Future-ready programs in digital skills, technology, creative disciplines, communication, and practical competencies for modern life and work.",
@@ -34,7 +34,7 @@ const services = [
   {
     name: "Delphi Career",
     href: "/career",
-    image: "/personalized_tutoring/delphi-career.png",
+    image: "/personalized_tutoring/delphi-career.webp",
     bg: "/our_service_section/our_service_section4.jpg",
     dark: true,
     desc: "Professional learning, certification, workplace skills, and career development programs designed for long-term growth and advancement.",
