@@ -10,8 +10,10 @@ export function Cta({
 }) {
   return (
     // Full-bleed band: no container, gutter or corner radius, so the artwork
-    // runs edge to edge. bg-brand backs it while the image loads.
-    <section className="relative overflow-hidden bg-brand">
+    // runs edge to edge. The min-heights let the 16:9 artwork breathe instead of
+    // being cropped to a strip by the copy's own height. bg-brand backs it while
+    // the image loads.
+    <section className="relative flex min-h-[440px] items-center overflow-hidden bg-brand sm:min-h-[560px] lg:min-h-[680px] xl:min-h-[760px]">
       <Image
         src="/homepage_assets/cta_enroll_now.jpg"
         alt=""
@@ -21,18 +23,20 @@ export function Cta({
       />
       {/* The artwork keeps its middle clear, with shapes in the corners, so the
           copy is centred to stay off them. */}
-      <div className="relative flex flex-col items-center px-6 py-16 text-center sm:px-12 sm:py-24">
-        <h2 className="max-w-2xl text-3xl font-bold leading-tight text-white sm:text-4xl">
+      <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-6 py-20 text-center sm:px-12 lg:py-28">
+        <h2 className="max-w-4xl text-4xl font-bold leading-[1.05] text-white sm:text-5xl lg:text-6xl xl:text-[68px]">
           {title}
         </h2>
-        <p className="mt-4 max-w-xl text-base text-white/85">{text}</p>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl lg:text-[22px]">
+          {text}
+        </p>
         <a
           href="/contact"
-          className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-medium text-brand transition-colors hover:bg-primary-100"
+          className="mt-10 inline-flex w-fit items-center gap-2.5 rounded-full bg-white px-8 py-4 text-lg font-medium text-brand transition-colors hover:bg-primary-100"
         >
           Get Started Today
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand text-white">
-            <ArrowUpRight className="h-4 w-4" />
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-white">
+            <ArrowUpRight className="h-4.5 w-4.5" />
           </span>
         </a>
       </div>

@@ -6,11 +6,12 @@ import { Plus, Minus, Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/cn";
-import { img } from "@/lib/images";
 
 const stages = [
   {
     title: "K12 Students",
+    image: "/student_success_matters/k-12.webp",
+    alt: "A tutor and a young learner working through a maths lesson on a laptop",
     desc: "We support parents and guardians by providing structured tutoring and academic guidance for their kids in K12.",
     bullets: [
       "School-complementing lessons",
@@ -22,11 +23,15 @@ const stages = [
   },
   {
     title: "College Students & Postgraduate Students",
+    image: "/student_success_matters/college-postgraduate.webp",
+    alt: "A postgraduate student reviewing written work with a supervisor",
     desc: "Crucial learning support designed for college students, early graduates and postgraduate students, designed to prepare for the toughest phase of the learning journey.",
     bullets: [],
   },
   {
     title: "Professionals & Adult Learners",
+    image: "/student_success_matters/adult-learners.webp",
+    alt: "Adult learners in a professional development class",
     desc: "Flexible learning paths designed for early-/mid-career professionals and working adults looking to upskill or pursue further education.",
     bullets: [],
   },
@@ -50,7 +55,8 @@ export function LearningSupport() {
                 >
                   <button
                     type="button"
-                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    onClick={() => setOpen(i)}
+                    aria-expanded={isOpen}
                     className="flex w-full items-start justify-between gap-4 text-left"
                   >
                     <span className="text-xl font-semibold text-ink">
@@ -91,14 +97,24 @@ export function LearningSupport() {
               );
             })}
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-            <Image
-              src={img("learning-support.webp")}
-              alt="A tutor supporting a young learner"
-              fill
-              sizes="(max-width: 1024px) 90vw, 600px"
-              className="object-cover"
-            />
+          {/* All three are stacked and cross-faded: switching stages never
+              flashes an empty frame while the next image loads. */}
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl lg:sticky lg:top-24">
+            {stages.map((stage, i) => (
+              <Image
+                key={stage.title}
+                src={stage.image}
+                alt={stage.alt}
+                aria-hidden={i !== open}
+                fill
+                priority={i === 0}
+                sizes="(max-width: 1024px) 90vw, 600px"
+                className={cn(
+                  "object-cover transition-opacity duration-500 motion-reduce:transition-none",
+                  i === open ? "opacity-100" : "opacity-0",
+                )}
+              />
+            ))}
           </div>
         </div>
       </Container>

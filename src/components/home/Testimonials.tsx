@@ -76,25 +76,25 @@ export function Testimonials() {
               // The second pass is decorative padding for the loop, so it is
               // hidden from assistive tech to avoid duplicate quotes.
               aria-hidden={i >= testimonials.length}
-              className="relative mr-4 flex w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-brand p-6 text-white sm:mr-5 sm:w-[380px] sm:p-7"
+              className="relative mr-3 flex w-[248px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-brand p-4 text-white sm:mr-5 sm:w-[380px] sm:rounded-3xl sm:p-7"
             >
               <Image
                 src={CARD_BG}
                 alt=""
                 fill
-                sizes="380px"
+                sizes="(max-width: 640px) 248px, 380px"
                 className="object-cover"
               />
-              <blockquote className="relative text-base leading-relaxed text-white/90">
+              <blockquote className="relative text-[13px] leading-snug text-white/90 sm:text-base sm:leading-relaxed">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption className="relative mt-6 flex items-center gap-3 border-t border-white/15 pt-5 sm:mt-8">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-semibold text-active">
+              <figcaption className="relative mt-4 flex items-center gap-2.5 border-t border-white/15 pt-3.5 sm:mt-8 sm:gap-3 sm:pt-5">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-active sm:h-10 sm:w-10 sm:text-sm">
                   {initials(t.name)}
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold">{t.name}</span>
-                  <span className="block text-xs text-white/70">
+                  <span className="block text-[13px] font-semibold sm:text-sm">{t.name}</span>
+                  <span className="block text-[11px] text-white/70 sm:text-xs">
                     {t.country}
                   </span>
                 </span>
