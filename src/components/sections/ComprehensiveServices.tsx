@@ -57,9 +57,7 @@ export function ComprehensiveServices() {
           {services.map((s, i) => (
             <div
               key={s.name}
-              // Static on mobile: a 500px+ card pinned on a short viewport traps
-              // the reader. The stack is a desktop affordance only.
-              className="md:sticky"
+              className="sticky"
               style={{ top: `${96 + i * 28}px` }}
             >
               <div

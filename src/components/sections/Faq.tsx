@@ -6,7 +6,6 @@ import { Plus, Minus } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/cn";
-import { img } from "@/lib/images";
 
 export type FaqItem = { q: string; a: string };
 
@@ -57,13 +56,14 @@ export function Faq({
           )}
         >
           {showImage && (
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#02532f]">
               <Image
-                src={img("faq-student.webp")}
-                alt="A student considering their options"
+                src="/FAQ_section/faq.webp"
+                // Decorative: the section heading already says what this is.
+                alt=""
                 fill
-                sizes="(max-width: 1024px) 90vw, 500px"
-                className="object-cover"
+                sizes="(max-width: 1024px) 90vw, 560px"
+                className="object-contain"
               />
             </div>
           )}
