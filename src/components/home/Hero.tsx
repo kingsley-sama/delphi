@@ -37,12 +37,12 @@ export function Hero() {
         aria-hidden
       />
       <Container className="relative grid items-center gap-8 py-12 sm:py-14 lg:grid-cols-[1fr_1.05fr] lg:gap-0 lg:py-20">
-        <div>
+        <div className="text-center lg:text-left">
           <span className="inline-flex animate-fade-up items-center gap-2 rounded-full bg-primary-150 px-4 py-2 text-[13px] font-semibold text-brand sm:gap-2.5 sm:px-5 sm:py-2.5 sm:text-sm">
             <span className="h-2 w-2 rounded-full bg-[#22c55e]" aria-hidden />
             Free trial classes and free consultation calls
           </span>
-          <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[56px]">
+          <h1 className="mt-6 text-[38px] font-bold leading-[1.08] tracking-tight text-ink min-[400px]:text-[42px] sm:text-5xl lg:text-[56px]">
             {headingParts.map((part, i) => (
               <Fragment key={part.text}>
                 <span className="inline-block -my-[0.25em] overflow-hidden py-[0.25em] align-bottom">
@@ -63,19 +63,22 @@ export function Hero() {
             ))}
           </h1>
           <p
-            className="mt-5 max-w-lg animate-fade-up text-lg text-ink-secondary"
+            className="mx-auto mt-5 max-w-lg animate-fade-up text-lg text-ink-secondary lg:mx-0"
             style={{ animationDelay: "620ms" }}
           >
             We offer tutoring and academic support services to help learners
             improve through teaching shaped around their needs and pace.
           </p>
-          <div className="mt-8 animate-fade-up" style={{ animationDelay: "720ms" }}>
+          <div
+            className="mt-8 flex animate-fade-up justify-center lg:justify-start"
+            style={{ animationDelay: "720ms" }}
+          >
             <ArrowCta href="/contact">Get Started Today</ArrowCta>
           </div>
         </div>
 
         <div className="relative">
-          <div className="relative mx-auto aspect-square w-full max-w-[520px] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100 lg:mx-0 lg:ml-auto lg:max-w-[600px]">
+          <div className="relative -mx-2 aspect-[4/5] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100 sm:mx-auto sm:aspect-square sm:w-full sm:max-w-[520px] lg:mx-0 lg:ml-auto lg:max-w-[600px]">
             <Image
               src="/images/hero-student.png"
               alt="Excited student holding a notebook and wearing a backpack"

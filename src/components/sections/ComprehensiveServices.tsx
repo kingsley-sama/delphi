@@ -78,7 +78,7 @@ export function ComprehensiveServices() {
                 <div className="relative grid gap-x-10 gap-y-5 p-6 sm:p-8 md:grid-cols-2 md:grid-rows-[auto_1fr] md:p-10 lg:p-12">
                   <h3
                     className={cn(
-                      "text-3xl uppercase leading-[1.05] tracking-wide md:col-start-2 md:row-start-1 md:text-center md:text-[40px] lg:text-[46px]",
+                      "text-center text-[32px] uppercase leading-[1.05] tracking-wide min-[400px]:text-[36px] md:col-start-2 md:row-start-1 md:text-[40px] lg:text-[46px]",
                       s.dark ? "text-white" : "text-active",
                     )}
                   >
@@ -98,16 +98,16 @@ export function ComprehensiveServices() {
                     />
                   </div>
 
-                  <div className="md:col-start-1 md:row-start-2 md:self-center md:text-center">
+                  <div className="text-center md:col-start-1 md:row-start-2 md:self-center">
                     <p
                       className={cn(
-                        "text-base leading-relaxed md:text-lg",
+                        "text-[17px] leading-relaxed md:text-lg",
                         s.dark ? "text-white/85" : "text-brand",
                       )}
                     >
                       {s.desc}
                     </p>
-                    <div className="mt-6 md:flex md:justify-center">
+                    <div className="mt-6 flex justify-center">
                       <ArrowCta href={s.href} inverted={s.dark}>
                         Explore Program
                       </ArrowCta>

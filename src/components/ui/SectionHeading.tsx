@@ -23,11 +23,11 @@ export function SectionHeading({
       )}
     >
       {badge && <Badge>{badge}</Badge>}
-      <h2 className="max-w-3xl text-3xl font-bold leading-tight text-ink sm:text-4xl lg:text-[48px]">
+      <h2 className="max-w-3xl text-[32px] font-bold leading-tight text-ink min-[400px]:text-[36px] sm:text-4xl lg:text-[48px]">
         {title}
       </h2>
       {subtitle && (
-        <p className="max-w-2xl text-base text-ink-secondary sm:text-lg">
+        <p className="max-w-2xl text-[17px] text-ink-secondary sm:text-lg">
           {subtitle}
         </p>
       )}
