@@ -42,7 +42,7 @@ export function Hero() {
             <span className="h-2 w-2 rounded-full bg-[#22c55e]" aria-hidden />
             Free trial classes and free consultation calls
           </span>
-          <h1 className="mt-6 text-[38px] font-bold leading-[1.08] tracking-tight text-ink min-[400px]:text-[42px] sm:text-5xl lg:text-[56px]">
+          <h1 className="mt-6 text-[42px] font-bold leading-[1.06] tracking-tight text-ink min-[400px]:text-[46px] sm:text-5xl lg:text-[56px]">
             {headingParts.map((part, i) => (
               <Fragment key={part.text}>
                 <span className="inline-block -my-[0.25em] overflow-hidden py-[0.25em] align-bottom">
@@ -63,7 +63,7 @@ export function Hero() {
             ))}
           </h1>
           <p
-            className="mx-auto mt-5 max-w-lg animate-fade-up text-lg text-ink-secondary lg:mx-0"
+            className="mx-auto mt-5 max-w-lg animate-fade-up text-[19px] text-ink-secondary sm:text-lg lg:mx-0"
             style={{ animationDelay: "620ms" }}
           >
             We offer tutoring and academic support services to help learners
@@ -78,14 +78,14 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div className="relative -mx-2 aspect-[4/5] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100 sm:mx-auto sm:aspect-square sm:w-full sm:max-w-[520px] lg:mx-0 lg:ml-auto lg:max-w-[600px]">
+          <div className="relative -mx-2 aspect-[3/4] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100 sm:mx-auto sm:aspect-square sm:w-full sm:max-w-[520px] lg:mx-0 lg:ml-auto lg:max-w-[600px]">
             <Image
               src="/images/hero-student.png"
               alt="Excited student holding a notebook and wearing a backpack"
               fill
               priority
               sizes="(max-width: 1024px) 90vw, 520px"
-              className="-translate-x-6 translate-y-6 scale-110 object-contain object-[0%_100%] sm:translate-x-[7%] sm:translate-y-[1%] sm:scale-100 sm:object-[35%_100%]"
+              className="object-cover object-[50%_100%] sm:translate-x-[7%] sm:translate-y-[1%] sm:object-contain sm:object-[35%_100%]"
             />
             <div className="absolute right-4 top-2 rounded-2xl bg-active px-4 py-3 text-xs text-white shadow-lg sm:top-4">
               <p className="font-semibold">

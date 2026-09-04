@@ -11,7 +11,7 @@ const stages = [
   {
     title: "K12 Students",
     image: "/student_success_matters/k-12.webp",
-    alt: "A tutor and a young learner working through a maths lesson on a laptop",
+    alt: "A teacher helping a young pupil with classwork at her desk",
     desc: "We support parents and guardians by providing structured tutoring and academic guidance for their kids in K12.",
     bullets: [
       "School-complementing lessons",
@@ -24,7 +24,7 @@ const stages = [
   {
     title: "College Students & Postgraduate Students",
     image: "/student_success_matters/college-postgraduate.webp",
-    alt: "A postgraduate student reviewing written work with a supervisor",
+    alt: "A postgraduate student talking with an advisor over a laptop",
     desc: "Crucial learning support designed for college students, early graduates and postgraduate students, designed to prepare for the toughest phase of the learning journey.",
     bullets: [],
   },
@@ -109,8 +109,11 @@ export function LearningSupport() {
                 fill
                 priority={i === 0}
                 sizes="(max-width: 1024px) 90vw, 600px"
+                // Anchored top: the frame is wider than these photos are, so the
+                // crop comes off the bottom rather than the subjects' heads.
+                quality={92}
                 className={cn(
-                  "object-cover transition-opacity duration-500 motion-reduce:transition-none",
+                  "object-cover object-top transition-opacity duration-500 motion-reduce:transition-none",
                   i === open ? "opacity-100" : "opacity-0",
                 )}
               />
