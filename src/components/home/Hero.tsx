@@ -80,11 +80,12 @@ export function Hero() {
         <div className="relative">
           <div className="relative -mx-2 aspect-[3/4] overflow-hidden rounded-[32px] bg-gradient-to-b from-primary-200 to-primary-100 sm:mx-auto sm:aspect-square sm:w-full sm:max-w-[520px] lg:mx-0 lg:ml-auto lg:max-w-[600px]">
             <Image
-              src="/images/hero-student.png"
+              src="/homepage_assets/delphi_hero.webp"
               alt="Excited student holding a notebook and wearing a backpack"
               fill
               priority
               sizes="(max-width: 1024px) 90vw, 520px"
+              quality={92}
               className="object-cover object-[50%_100%] sm:translate-x-[7%] sm:translate-y-[1%] sm:object-contain sm:object-[35%_100%]"
             />
             <div className="absolute right-4 top-2 rounded-2xl bg-active px-4 py-3 text-xs text-white shadow-lg sm:top-4">
