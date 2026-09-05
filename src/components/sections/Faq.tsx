@@ -56,7 +56,7 @@ export function Faq({
           )}
         >
           {showImage && (
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#02532f]">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-brand">
               <Image
                 src="/FAQ_section/faq.webp"
                 // Decorative: the section heading already says what this is.

@@ -99,13 +99,6 @@ export function Footer() {
           All rights reserved.
         </div>
       </div>
-
-      <div
-        aria-hidden
-        className="select-none overflow-hidden text-center font-display text-[12vw] font-extrabold leading-none tracking-tight text-primary-150"
-      >
-        DELPHI EDUCATION HUB
-      </div>
     </footer>
   );
 }

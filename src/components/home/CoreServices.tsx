@@ -1,43 +1,42 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { img } from "@/lib/images";
 
 const items = [
   {
     title: "Personalized Tutoring",
     desc: "One-on-one and small-group learning designed around each student's pace, goals, strengths, and challenges.",
-    image: img("core-tutoring.webp"),
+    image: "/personalized_learning/personalized-tutoring.webp",
   },
   {
     title: "Exam Preparation",
     desc: "Structured coaching and strategic preparation for national, international, professional, and university entrance examinations.",
-    image: img("core-exam.webp"),
+    image: "/personalized_learning/exam-preparation.webp",
   },
   {
     title: "Academic Support",
     desc: "Comprehensive support systems that help students stay academically strong through study coaching, revision, instruction, and assignment support.",
-    image: img("core-academic.webp"),
+    image: "/personalized_learning/academic-support.webp",
   },
   {
     title: "Skill Development",
     desc: "Future-focused learning experiences in technology, digital skills, creative disciplines, communication, and other high-value competencies.",
-    image: img("core-skill.webp"),
+    image: "/personalized_learning/skill-development.webp",
   },
   {
     title: "Career Development",
     desc: "Practical learning and coaching programs that help students, graduates, and professionals prepare for certifications and career growth.",
-    image: img("core-career.webp"),
+    image: "/personalized_learning/career-development.webp",
   },
   {
     title: "Research Support",
     desc: "Guided support for academic research, essays, projects, reports, and data analysis.",
-    image: img("core-research.webp"),
+    image: "/personalized_learning/research-support.webp",
   },
   {
     title: "Academic Consulting",
     desc: "Advisor services for parents, educators, and institutions seeking stronger learning systems, academic planning, and student development.",
-    image: img("core-consulting.webp"),
+    image: "/personalized_learning/academic-consulting.webp",
   },
 ];
 

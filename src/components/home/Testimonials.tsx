@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { regions } from "@/lib/site";
 
 // One shared backdrop so every card reads identically. The artwork is a dark
 // green field, so the copy stays white throughout.
@@ -44,6 +45,11 @@ const testimonials = [
     country: "United Kingdom",
   },
 ];
+
+/** The navbar's region list is the source of truth for flags. */
+function flagFor(country: string) {
+  return regions.find((r) => r.name === country)?.flag;
+}
 
 function initials(name: string) {
   return name
@@ -94,8 +100,11 @@ export function Testimonials() {
                 </span>
                 <span>
                   <span className="block text-[13px] font-semibold sm:text-sm">{t.name}</span>
-                  <span className="block text-[11px] text-white/70 sm:text-xs">
-                    {t.country}
+                  {/* The flag stands in for the country name; the name is kept
+                      for screen readers, which read flag emoji inconsistently. */}
+                  <span className="block text-base leading-none sm:text-lg">
+                    <span aria-hidden>{flagFor(t.country) ?? t.country}</span>
+                    <span className="sr-only">{t.country}</span>
                   </span>
                 </span>
               </figcaption>

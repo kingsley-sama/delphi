@@ -11,7 +11,7 @@ const stages = [
   {
     title: "K12 Students",
     image: "/student_success_matters/k-12.webp",
-    alt: "A teacher helping a young pupil with classwork at her desk",
+    alt: "Two students studying together over a notebook",
     desc: "We support parents and guardians by providing structured tutoring and academic guidance for their kids in K12.",
     bullets: [
       "School-complementing lessons",
@@ -24,7 +24,7 @@ const stages = [
   {
     title: "College Students & Postgraduate Students",
     image: "/student_success_matters/college-postgraduate.webp",
-    alt: "A postgraduate student talking with an advisor over a laptop",
+    alt: "A postgraduate student working at a laptop while a mentor looks on",
     desc: "Crucial learning support designed for college students, early graduates and postgraduate students, designed to prepare for the toughest phase of the learning journey.",
     bullets: [],
   },
