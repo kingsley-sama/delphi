@@ -15,7 +15,7 @@ export function PageHero({
   cta?: { label: string; href: string };
 }) {
   return (
-    <section className="relative -mt-[72px] overflow-hidden bg-primary-50 pt-[72px]">
+    <section className="relative -mt-[var(--header-h)] overflow-hidden bg-primary-50 pt-[var(--header-h)]">
       <div
         className="absolute inset-0 opacity-50"
         style={{ backgroundImage: "url(/images/grid-bg.png)", backgroundSize: "cover" }}

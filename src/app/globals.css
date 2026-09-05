@@ -50,19 +50,6 @@
     }
   }
 
-  /* Reviews marquee. The track holds the list twice, so shifting it by half its
-     width lands exactly on the duplicate and loops seamlessly. */
-  --animate-marquee: marquee 55s linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
   @keyframes fade-up {
     from {
       opacity: 0;
@@ -79,8 +66,7 @@
    the animation off (rather than overriding it) restores the resting state. */
 @media (prefers-reduced-motion: reduce) {
   .animate-reveal-up,
-  .animate-fade-up,
-  .animate-marquee {
+  .animate-fade-up {
     animation: none;
   }
 }
@@ -88,10 +74,20 @@
 :root {
   --background: #ffffff;
   --foreground: #111111;
+  /* Height of the fixed navbar. `main` and the hero sections offset by this,
+     so it is defined once here rather than repeated as a literal at each. */
+  --header-h: 52px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 72px;
+  }
 }
 
 html {
-  scroll-behavior: smooth;
+  /* No `scroll-behavior: smooth` here -- Lenis interpolates scroll itself and
+     the native behaviour fights it. See components/SmoothScroll.tsx. */
   /* Off-canvas panels (e.g. the mobile nav) park off the right edge with
      translate-x-full. Use `clip` (not `hidden`): it clips position:fixed
      descendants so they can't create horizontal scroll, and it doesn't make

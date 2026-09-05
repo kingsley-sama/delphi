@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Check } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { regions } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
@@ -100,32 +100,53 @@ export function CountrySelector({ className }: { className?: string }) {
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-label="Choose a country curriculum"
-          className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-neutral-100"
+          className="flex h-11 items-center gap-0.5 rounded-full pl-1 pr-1.5 transition-colors hover:bg-neutral-100"
         >
           <FlagChip flag={regions[selected].flag} className="h-7 w-7 text-lg" />
+          {/* Marks the flag as a menu rather than a static badge. */}
+          <ChevronDown
+            className={cn(
+              "h-4 w-4 text-ink-secondary transition-transform",
+              open && "rotate-180",
+            )}
+            aria-hidden
+          />
         </button>
 
-        {open && (
-          <div
-            role="listbox"
-            className="absolute right-0 top-full z-50 mt-2 w-56 rounded-2xl border border-neutral-200 bg-white p-2 shadow-xl shadow-black/5"
-          >
-            {regions.map((r, i) => (
-              <button
-                key={r.name}
-                type="button"
-                role="option"
-                aria-selected={i === selected}
-                onClick={() => pick(i)}
-                className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors hover:bg-primary-100"
-              >
-                <FlagChip flag={r.flag} className="h-7 w-7 text-lg" />
-                <span className="flex-1 text-sm font-medium text-ink">{r.name}</span>
-                {i === selected && <Check className="h-4 w-4 text-brand" />}
-              </button>
-            ))}
-          </div>
-        )}
+        {/* Kept mounted so it can animate both ways; `invisible` takes it out of
+            the a11y tree and holds through the fade before hiding. */}
+        <div
+          role="listbox"
+          className={cn(
+            "absolute right-0 top-full z-50 mt-2 w-56 origin-top-right rounded-2xl border border-neutral-200 bg-white p-2 shadow-xl shadow-black/5",
+            "transition-[opacity,transform,visibility] duration-200 ease-out motion-reduce:transition-none",
+            open
+              ? "visible translate-y-0 scale-100 opacity-100"
+              : "invisible -translate-y-1 scale-95 opacity-0",
+          )}
+        >
+          {regions.map((r, i) => (
+            <button
+              key={r.name}
+              type="button"
+              role="option"
+              aria-selected={i === selected}
+              tabIndex={open ? 0 : -1}
+              onClick={() => pick(i)}
+              className={cn(
+                "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left",
+                "transition-all duration-200 ease-out hover:bg-primary-100 motion-reduce:transition-none",
+                open ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0",
+              )}
+              // Options trail the panel so the list reads as unfolding.
+              style={{ transitionDelay: open ? `${60 + i * 45}ms` : "0ms" }}
+            >
+              <FlagChip flag={r.flag} className="h-7 w-7 text-lg" />
+              <span className="flex-1 text-sm font-medium text-ink">{r.name}</span>
+              {i === selected && <Check className="h-4 w-4 text-brand" />}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -33,7 +33,12 @@ export function ArrowCta({
         href={href}
         aria-hidden
         tabIndex={-1}
-        className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-accent text-ink sm:h-[52px] sm:w-[52px]"
+        className={cn(
+          "flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full sm:h-[52px] sm:w-[52px]",
+          // Over a light field the disc goes deep green with a lemon arrow; on
+          // a dark card that would disappear, so it flips to the lemon disc.
+          inverted ? "bg-accent text-ink" : "bg-brand text-accent",
+        )}
       >
         <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
       </Link>

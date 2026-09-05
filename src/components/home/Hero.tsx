@@ -25,7 +25,7 @@ const studentAvatars = [
 
 export function Hero() {
   return (
-    <section className="relative -mt-[72px] overflow-hidden bg-primary-50 pt-[72px]">
+    <section className="relative -mt-[var(--header-h)] overflow-hidden bg-primary-50 pt-[var(--header-h)]">
       <div
         className="absolute inset-0 opacity-100"
         style={{
@@ -88,7 +88,7 @@ export function Hero() {
               quality={92}
               className="object-cover object-[50%_100%] sm:translate-x-[7%] sm:translate-y-[1%] sm:object-contain sm:object-[35%_100%]"
             />
-            <div className="absolute right-4 top-2 rounded-2xl bg-active px-4 py-3 text-xs text-white shadow-lg sm:top-4">
+            <div className="absolute right-4 top-2 rounded-full bg-brand px-4 py-2 text-xs text-white shadow-lg sm:top-4">
               <p className="font-semibold">
                 <span className="text-accent">5,000+</span> hours taught
               </p>

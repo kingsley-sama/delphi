@@ -5,9 +5,13 @@ import {
   Permanent_Marker,
 } from "next/font/google";
 import "./globals.css";
+// Ships `html.lenis` height fixes and the `.lenis-stopped` overflow clip that
+// makes lenis.stop() actually hold the page still.
+import "lenis/dist/lenis.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { BookCallModal } from "@/components/BookCallModal";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -45,10 +49,12 @@ export default function RootLayout({
       className={`${jakarta.variable} ${plex.variable} ${marker.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-white text-ink">
-        <NavBar />
-        <main className="flex-1 pt-[72px]">{children}</main>
-        <Footer />
-        <BookCallModal />
+        <SmoothScroll>
+          <NavBar />
+          <main className="flex-1 pt-[var(--header-h)]">{children}</main>
+          <Footer />
+          <BookCallModal />
+        </SmoothScroll>
       </body>
     </html>
   );

@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -60,6 +63,87 @@ function initials(name: string) {
 }
 
 export function Testimonials() {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  // The reel advances by driving `scrollLeft` rather than animating a
+  // transform, so the auto-motion and a user's swipe act on the same axis
+  // instead of fighting each other. Touch keeps its native momentum.
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const SPEED = 40; // px per second
+    let raf = 0;
+    let last = 0;
+    let paused = false;
+    let resumeTimer = 0;
+    // Sub-pixel accumulator. `scrollLeft` rounds on every write, so advancing
+    // it directly by less than a pixel per frame rounds up each time and makes
+    // the speed a function of the display's refresh rate instead of SPEED.
+    let pos = el.scrollLeft;
+
+    const tick = (now: number) => {
+      if (!last) last = now;
+      // Clamp so a backgrounded tab does not resume with one huge jump.
+      const dt = Math.min(now - last, 100);
+      last = now;
+
+      if (paused) {
+        // Follow the user rather than fighting native momentum.
+        pos = el.scrollLeft;
+      } else {
+        // A swipe may have moved the scroller since the last frame.
+        if (Math.abs(el.scrollLeft - pos) > 2) pos = el.scrollLeft;
+        pos += (SPEED * dt) / 1000;
+
+        // The list renders twice, so half the scroll width is one full loop.
+        // Wrapping at either end lands on the identical duplicate, which makes
+        // the seam invisible and lets a backwards swipe keep going too.
+        const half = el.scrollWidth / 2;
+        if (half > 0) {
+          if (pos >= half) pos -= half;
+          else if (pos < 0) pos += half;
+        }
+        el.scrollLeft = pos;
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    const pause = () => {
+      paused = true;
+      window.clearTimeout(resumeTimer);
+    };
+    const resumeSoon = () => {
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(() => {
+        paused = false;
+      }, 1200);
+    };
+    const onWheel = () => {
+      pause();
+      resumeSoon();
+    };
+
+    el.addEventListener("pointerenter", pause);
+    el.addEventListener("pointerleave", resumeSoon);
+    el.addEventListener("touchstart", pause, { passive: true });
+    el.addEventListener("touchend", resumeSoon, { passive: true });
+    el.addEventListener("wheel", onWheel, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(resumeTimer);
+      el.removeEventListener("pointerenter", pause);
+      el.removeEventListener("pointerleave", resumeSoon);
+      el.removeEventListener("touchstart", pause);
+      el.removeEventListener("touchend", resumeSoon);
+      el.removeEventListener("wheel", onWheel);
+    };
+  }, []);
+
   return (
     <section id="testimonials" className="bg-neutral-100 py-14 sm:py-20">
       <Container>
@@ -69,13 +153,17 @@ export function Testimonials() {
           subtitle="Hear from learners who have transformed their skills, confidence, and future opportunities through our programs."
         />
       </Container>
-      {/* Continuous right-to-left marquee, outside the Container so the track
+      {/* Continuous right-to-left reel, outside the Container so the track
           spans the full viewport width on every breakpoint. The list renders
-          twice and the track shifts by half its width, so the loop is seamless.
-          Spacing uses a right margin rather than flex `gap` so each half is
-          exactly 50%. */}
-      <div className="relative mt-8 overflow-hidden sm:mt-12 motion-reduce:overflow-x-auto">
-        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+          twice so the wrap lands on an identical duplicate. Spacing uses a
+          right margin rather than flex `gap` so each half is exactly 50%.
+          The scroller stays native, so a swipe drives it directly; the effect
+          above only nudges the same `scrollLeft`. */}
+      <div
+        ref={trackRef}
+        className="relative mt-8 overflow-x-auto overscroll-x-contain sm:mt-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        <div className="flex w-max">
           {[...testimonials, ...testimonials].map((t, i) => (
             <figure
               key={`${t.name}-${i}`}

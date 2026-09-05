@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useLenis } from "lenis/react";
 import { ArrowRight, ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { CountrySelector } from "./CountrySelector";
@@ -25,6 +26,7 @@ export function NavBar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const lenis = useLenis();
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -34,18 +36,23 @@ export function NavBar() {
     setOpen(false);
   }, [pathname]);
 
-  // Lock body scroll while the slide-in panel is open.
+  // Lock body scroll while the slide-in panel is open. Lenis drives scroll
+  // from its own rAF loop, so `overflow: hidden` alone does not hold it — it
+  // has to be stopped explicitly as well.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (open) lenis?.stop();
+    else lenis?.start();
     return () => {
       document.body.style.overflow = "";
+      lenis?.start();
     };
-  }, [open]);
+  }, [open, lenis]);
 
   return (
     <>
     <header className="fixed inset-x-0 top-0 z-50 bg-white/40 backdrop-blur-md">
-      <nav className="relative mx-auto flex h-[72px] w-full max-w-[1720px] items-center justify-between px-5 sm:px-8 lg:px-12">
+      <nav className="relative mx-auto flex h-[var(--header-h)] w-full max-w-[1720px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <div className="flex items-center gap-2.5 lg:gap-4">
           <Logo variant="nav" />
           {/* Mobile: the country flags sit to the right of the bar, clear of the logo; desktop: inline next to the logo. */}
