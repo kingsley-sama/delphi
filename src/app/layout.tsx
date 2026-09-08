@@ -49,6 +49,12 @@ export default function RootLayout({
       className={`${jakarta.variable} ${plex.variable} ${marker.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-white text-ink">
+        {/* Framer Motion server-renders its reveal targets at opacity:0 and
+            animates them in on the client. Without JS that content would never
+            appear, so force it visible when scripts do not run. */}
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <SmoothScroll>
           <NavBar />
           <main className="flex-1 pt-[var(--header-h)]">{children}</main>

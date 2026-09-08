@@ -14,7 +14,7 @@ export const supabase = createClient(url, anonKey);
 
 /** Shape of a row in `public.contact_submissions`. */
 export type ContactSubmission = {
-  source: "contact-form" | "book-call";
+  source: "contact-form" | "book-call" | "bootcamp";
   email: string;
   name?: string | null;
   first_name?: string | null;

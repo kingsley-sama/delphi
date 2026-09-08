@@ -7,6 +7,7 @@ import { Curriculum } from "@/components/home/Curriculum";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Faq } from "@/components/sections/Faq";
 import { Cta } from "@/components/sections/Cta";
+import { BootcampPromo } from "@/components/BootcampPromo";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Testimonials />
       <Faq />
       <Cta />
+      <BootcampPromo />
     </>
   );
 }

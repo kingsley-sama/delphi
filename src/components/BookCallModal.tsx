@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Check, ChevronDown, Mail, X } from "lucide-react";
+import { Check, Mail, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { submitContact } from "@/lib/supabase";
+import { inputClass, SelectField } from "@/components/ui/FormFields";
 
 const BOOK_CALL_EVENT = "open-book-call";
 
@@ -21,48 +22,6 @@ const programs = [
   "Not sure yet",
 ];
 const callModes = ["Google Meet", "WhatsApp", "Phone"];
-
-const inputClass =
-  "h-[46px] w-full rounded-full border border-neutral-200 bg-transparent px-4 text-[15px] text-ink outline-none transition-colors placeholder:text-ink-secondary/60 focus:border-brand focus:ring-1 focus:ring-brand/30";
-
-function SelectField({
-  name,
-  defaultValue,
-  placeholder,
-  options,
-  required,
-  className,
-}: {
-  name: string;
-  defaultValue?: string;
-  placeholder?: string;
-  options: string[];
-  required?: boolean;
-  className?: string;
-}) {
-  return (
-    <div className={cn("relative", className)}>
-      <select
-        name={name}
-        required={required}
-        defaultValue={defaultValue ?? ""}
-        className={cn(inputClass, "appearance-none pr-10", !defaultValue && "text-ink-secondary/60")}
-      >
-        {placeholder && (
-          <option value="" disabled>
-            {placeholder}
-          </option>
-        )}
-        {options.map((o) => (
-          <option key={o} value={o} className="text-ink">
-            {o}
-          </option>
-        ))}
-      </select>
-      <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-secondary" />
-    </div>
-  );
-}
 
 export function BookCallModal() {
   const [shouldRender, setShouldRender] = useState(false);
@@ -144,7 +103,7 @@ export function BookCallModal() {
       aria-modal="false"
       aria-label="Book a free call"
       className={cn(
-        "fixed bottom-6 right-6 z-[100] max-h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] max-w-[420px] overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-6 shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:p-8",
+        "fixed bottom-6 right-6 z-[100] max-h-[calc(100vh_-_3rem)] w-[calc(100vw_-_3rem)] max-w-[420px] overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-6 shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:p-8",
         visible
           ? "translate-y-0 scale-100 opacity-100"
           : "pointer-events-none translate-y-8 scale-95 opacity-0",
