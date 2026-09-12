@@ -3,17 +3,19 @@ import { Fragment } from "react";
 import Image from "next/image";
 import {
   BarChart3,
+  Bell,
   BookOpen,
   Brain,
+  Briefcase,
   Calculator,
   CalendarDays,
   Check,
   ClipboardCheck,
-  Handshake,
+  FileText,
   Library,
   LineChart,
-  Search,
-  Users,
+  MessageSquare,
+  Network,
   Video,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -91,41 +93,94 @@ const sectors = [
   },
 ];
 
-const coreFeatures = [
+const educationalFeatures = [
+  {
+    icon: LineChart,
+    title: "Assessment, analytics & targeted support",
+    points: [
+      "Diagnostic/readiness assessment to identify each learner's abilities and weaknesses.",
+      "Progress tracking across subjects using diagnostic and mock-test results.",
+      "Special intervention, reviews and consultation for learners who are not improving.",
+    ],
+  },
+  {
+    icon: BookOpen,
+    title: "Strong foundations & structured curriculum",
+    points: [
+      "Explicit repair of foundational concepts before advanced and timed work.",
+      "A thorough curriculum across numerical, verbal, logical and data reasoning.",
+      "Long-term reasoning development instead of memorising employer past questions.",
+    ],
+  },
   {
     icon: Video,
-    title: "Expert teaching",
-    desc: "Live instructor-led classes, with every session recorded so you can go back over anything.",
+    title: "Intensive live & peer-led learning",
+    points: [
+      "Regular live expert classes across all four domains throughout the three-month programme.",
+      "Small peer-led study groups with independent practice outside tutor-led classes.",
+      "Recorded classes plus organised preparation materials and resources.",
+    ],
   },
   {
     icon: Library,
-    title: "Quality practice bank",
-    desc: "Rich, organised practice material across all four core areas — not a pile of random questions.",
-  },
-  {
-    icon: LineChart,
-    title: "Mock tests & progress tracking",
-    desc: "Timed mock assessments, so you can compare your results rather than just your effort.",
-  },
-  {
-    icon: Users,
-    title: "Long-term job preparation community",
-    desc: "Lifetime access to the preparation community — it stays with you until you are employed.",
-  },
-  {
-    icon: Handshake,
-    title: "Recruitment professionals interaction",
-    desc: "Sessions with recruitment professionals who see these assessments from the hiring side.",
-  },
-  {
-    icon: Search,
-    title: "Speed under timing",
-    desc: "Timed practice builds the pace and decision-making rhythm you need without sacrificing accuracy.",
+    title: "Deliberate practice, speed & realistic mocks",
+    points: [
+      "A large organised question bank, weekly practice sets and continuous deliberate practice.",
+      "Progressive practice under realistic time constraints to build speed.",
+      "Repeated timed mock assessments across the programme.",
+    ],
   },
   {
     icon: ClipboardCheck,
-    title: "Mistake diagnosis",
-    desc: "Understand why an answer was wrong, correct the underlying skill and turn practice into score improvement.",
+    title: "Accuracy, test formats & test-day strategy",
+    points: [
+      "Error analysis and accuracy training rather than simply completing more questions.",
+      "Familiarisation with major aptitude-test providers, formats and difficulty levels.",
+      "Explicit training in pacing, question selection, time management and final test readiness.",
+    ],
+  },
+];
+
+const careerFeatures = [
+  {
+    icon: Briefcase,
+    title: "Career webinars & sector exposure",
+    points: [
+      "Specialist career and recruitment webinars with speakers who have successfully completed recruitment processes.",
+      "Focused insight into banking and finance, consulting and professional services, and oil, gas and energy.",
+    ],
+  },
+  {
+    icon: FileText,
+    title: "CV, LinkedIn & recruitment materials",
+    points: [
+      "Guidance and review for stronger CVs and optimised LinkedIn profiles.",
+      "Practical templates, samples and guides for different recruitment stages.",
+    ],
+  },
+  {
+    icon: MessageSquare,
+    title: "Interview & psychometric readiness",
+    points: [
+      "Interview-preparation webinars, support and peer-led interview practice.",
+      "Guidance on personality assessments, situational judgement tests and other psychometric stages.",
+    ],
+  },
+  {
+    icon: Bell,
+    title: "Opportunities & ongoing community",
+    points: [
+      "Current graduate recruitment, internship and related opportunity alerts.",
+      "Long-term access to the aptitude and career-preparation community until employment.",
+    ],
+  },
+  {
+    icon: Network,
+    title: "Strategic network & portfolio support",
+    points: [
+      "An exclusive ecosystem connecting ambitious final-year scholars, NYSC members and early-career professionals.",
+      "Guidance for building strong projects and developing a stronger professional portfolio.",
+    ],
   },
 ];
 
@@ -305,25 +360,74 @@ export default function BootcampPage() {
             <SectionHeading
               badge="Core Features"
               title="What You Get On The Bootcamp"
-              subtitle="Don't just practise hundreds of questions — build the skills behind them, with the support to keep going."
+              subtitle="A complete preparation system: build the reasoning skills behind the test, then strengthen every stage of your career journey."
             />
           </Reveal>
-          <RevealGroup className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-            {coreFeatures.map((f) => (
+          <Reveal className="mt-10 sm:mt-14">
+            <p className="text-center text-sm font-bold uppercase tracking-[0.18em] text-brand">
+              Core Educational Features
+            </p>
+            <h3 className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold text-ink sm:text-3xl">
+              Learn deeply, practise deliberately and improve measurably
+            </h3>
+          </Reveal>
+          <RevealGroup className="mt-7 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            {educationalFeatures.map((feature) => (
               <RevealItem
-                key={f.title}
+                key={feature.title}
                 className="rounded-3xl border border-neutral-200 bg-primary-50 p-5 sm:p-7"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
-                  <f.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <feature.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </span>
                 <h3 className="mt-4 text-base font-semibold text-ink sm:mt-5 sm:text-xl">
-                  {f.title}
+                  {feature.title}
                 </h3>
-                <p className="mt-2 text-sm text-ink-secondary sm:text-base">{f.desc}</p>
+                <ul className="mt-4 space-y-3">
+                  {feature.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink-secondary">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" strokeWidth={3} />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </RevealItem>
             ))}
           </RevealGroup>
+
+          <div className="mt-14 rounded-[32px] bg-brand p-5 sm:mt-20 sm:p-8 lg:p-10">
+            <Reveal>
+              <p className="text-center text-sm font-bold uppercase tracking-[0.18em] text-accent">
+                Job &amp; Career-Preparation Features
+              </p>
+              <h3 className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold text-white sm:text-3xl">
+                Go beyond the aptitude test and prepare for the opportunity
+              </h3>
+            </Reveal>
+            <RevealGroup className="mt-7 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+              {careerFeatures.map((feature) => (
+                <RevealItem
+                  key={feature.title}
+                  className="rounded-3xl border border-white/15 bg-white/[0.07] p-5 sm:p-7"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent text-brand sm:h-14 sm:w-14">
+                    <feature.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </span>
+                  <h3 className="mt-4 text-base font-semibold text-white sm:mt-5 sm:text-xl">
+                    {feature.title}
+                  </h3>
+                  <ul className="mt-4 space-y-3">
+                    {feature.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2.5 text-sm leading-relaxed text-white/75">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={3} />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
           <Reveal className="mt-10 flex justify-center sm:mt-12">
             <ArrowCta href={ASSESSMENT_HREF}>Take Free Readiness Test</ArrowCta>
           </Reveal>
