@@ -17,13 +17,13 @@ import {
   MessageSquare,
   Network,
   Video,
+  ArrowUpRight,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ArrowCta } from "@/components/ui/ArrowCta";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Motion";
 import { cn } from "@/lib/cn";
-import { BootcampDetails } from "./BootcampDetails";
 import { Facilitators } from "./Facilitators";
 import { BootcampHeroImage } from "./BootcampHeroImage";
 
@@ -527,19 +527,38 @@ export default function BootcampPage() {
           </p>
           </RevealItem>
           <RevealItem className="mt-9">
-            <a
-              href={REGISTER_HREF}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-base font-medium text-brand"
-            >
-              Register On WhatsApp
-            </a>
+            <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-7">
+              <div className="flex items-center gap-3">
+                <a
+                  href={ASSESSMENT_HREF}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-7 py-3.5 text-base font-medium text-brand transition-transform hover:-translate-y-0.5"
+                >
+                  Take Free Readiness Test
+                </a>
+                <a
+                  href={ASSESSMENT_HREF}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Take Free Readiness Test"
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent text-brand transition-transform hover:-translate-y-0.5"
+                >
+                  <ArrowUpRight className="h-5 w-5" />
+                </a>
+              </div>
+              <a
+                href={REGISTER_HREF}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/35 px-7 py-3.5 text-base font-medium text-white transition-colors hover:border-white hover:bg-white/10"
+              >
+                Register for Bootcamp
+              </a>
+            </div>
           </RevealItem>
         </RevealGroup>
       </section>
-
-      <BootcampDetails />
     </>
   );
 }
