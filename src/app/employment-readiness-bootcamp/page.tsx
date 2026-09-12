@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
+import Image from "next/image";
 import {
   BarChart3,
   BookOpen,
@@ -89,9 +90,24 @@ const coreSkills = [
 ];
 
 const sectors = [
-  { icon: Fuel, name: "Oil & Gas" },
-  { icon: Briefcase, name: "Consulting" },
-  { icon: Landmark, name: "Banking & Finance" },
+  {
+    icon: Fuel,
+    name: "Oil & Gas",
+    image: "/employment-readiness/sectors/oil-gas.webp",
+    imageAlt: "Oil and gas engineer inspecting refinery equipment",
+  },
+  {
+    icon: Briefcase,
+    name: "Consulting",
+    image: "/employment-readiness/sectors/consulting.webp",
+    imageAlt: "Consultants collaborating on a strategy and data analysis project",
+  },
+  {
+    icon: Landmark,
+    name: "Banking & Finance",
+    image: "/employment-readiness/sectors/banking-finance.webp",
+    imageAlt: "Finance professionals reviewing market and financial data",
+  },
 ];
 
 const coreFeatures = [
@@ -251,18 +267,33 @@ export default function BootcampPage() {
               title="Let's Get You Closer To Your Dream Career In:"
             />
           </Reveal>
-          <RevealGroup className="mt-8 grid grid-cols-3 gap-3 sm:mt-12 sm:gap-5">
+          <RevealGroup className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-3 sm:gap-5">
             {sectors.map((sector) => (
               <RevealItem
                 key={sector.name}
-                className="flex flex-col items-center rounded-3xl border border-neutral-200 bg-primary-50 px-2 py-6 text-center sm:px-6 sm:py-8"
+                className="group overflow-hidden rounded-3xl border border-neutral-200 bg-primary-50"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
-                  <sector.icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                </span>
-                <p className="mt-3 text-sm font-bold leading-tight text-ink sm:mt-4 sm:text-xl lg:text-2xl">
-                  {sector.name}
-                </p>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={sector.image}
+                    alt={sector.imageAlt}
+                    fill
+                    sizes="(max-width: 640px) 92vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-brand/25 via-transparent to-transparent"
+                    aria-hidden
+                  />
+                </div>
+                <div className="flex items-center gap-3 px-5 py-4 sm:px-5 sm:py-5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
+                    <sector.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </span>
+                  <p className="text-lg font-bold leading-tight text-ink sm:text-xl lg:text-2xl">
+                    {sector.name}
+                  </p>
+                </div>
               </RevealItem>
             ))}
           </RevealGroup>
