@@ -17,14 +17,14 @@ export function BootcampHeroImage() {
   const reduced = useReducedMotion();
 
   return (
-    <div className="relative mx-auto w-full max-w-[460px] pb-12 pt-10 lg:mx-0 lg:-ml-4">
-      <div className="relative mx-auto aspect-[4/5] w-2/3 max-w-[320px] overflow-hidden rounded-[30px] bg-white/5 shadow-[0_32px_90px_rgba(0,0,0,0.35)] ring-1 ring-white/15 lg:mx-0">
+    <div className="relative mx-auto w-full max-w-[470px] lg:mx-0 lg:ml-auto">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-white/5 shadow-[0_32px_90px_rgba(0,0,0,0.35)] ring-1 ring-white/15">
         <Image
           src="/employment-readiness/three-key-sectors-portrait.webp"
           alt="Professionals representing oil and gas, consulting, and banking and finance careers"
           fill
           priority
-          sizes="(max-width: 640px) 66vw, 320px"
+          sizes="(max-width: 640px) 92vw, 470px"
           quality={92}
           className="object-cover"
         />
@@ -42,44 +42,43 @@ export function BootcampHeroImage() {
           }}
           aria-hidden
         />
-      </div>
-
-      <div className="absolute right-1 top-0 rounded-full bg-accent px-4 py-2 text-xs text-ink shadow-lg sm:right-4">
-        <p className="font-semibold">
-          <span className="font-bold">40</span> questions
-        </p>
-      </div>
-
-      <div className="absolute right-0 top-16 flex w-[172px] flex-col items-start gap-2 rounded-2xl bg-white px-3 py-2.5 text-[11px] text-ink shadow-xl sm:w-[205px] sm:gap-3 sm:px-3.5 sm:py-3 sm:text-xs">
-        <div className="flex gap-0.5 text-amber-400">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
-          ))}
+        <div className="absolute right-3 top-3 rounded-full bg-accent px-4 py-2 text-xs text-ink shadow-lg sm:right-4 sm:top-4">
+          <p className="font-semibold">
+            <span className="font-bold">40</span> questions
+          </p>
         </div>
-        <p className="font-normal leading-snug">
-          10 questions in each of the four core areas
-        </p>
-        <div className="flex -space-x-2.5 sm:-space-x-3">
-          {studentAvatars.map((file) => (
-            <span
-              key={file}
-              className="relative h-7 w-7 overflow-hidden rounded-full border-2 border-white sm:h-[38px] sm:w-[38px]"
-            >
-              <Image
-                src={`/student_avatars/${file}`}
-                alt=""
-                fill
-                sizes="38px"
-                className="object-cover"
-              />
-            </span>
-          ))}
-        </div>
-      </div>
 
-      <div className="absolute bottom-0 left-0 rounded-2xl bg-white px-4 py-3 text-xs text-ink shadow-xl sm:-left-3">
-        <p className="font-semibold">One Readiness Check</p>
-        <p className="text-ink-secondary">Before the invitation arrives</p>
+        <div className="absolute bottom-3 left-3 flex w-[180px] flex-col items-start gap-2 rounded-2xl bg-white px-3 py-2.5 text-[11px] text-ink shadow-xl sm:bottom-5 sm:left-5 sm:w-[205px] sm:gap-3 sm:px-3.5 sm:py-3 sm:text-xs">
+          <div className="flex gap-0.5 text-amber-400">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
+            ))}
+          </div>
+          <p className="font-normal leading-snug">
+            10 questions in each of the four core areas
+          </p>
+          <div className="flex -space-x-2.5 sm:-space-x-3">
+            {studentAvatars.map((file) => (
+              <span
+                key={file}
+                className="relative h-7 w-7 overflow-hidden rounded-full border-2 border-white sm:h-[38px] sm:w-[38px]"
+              >
+                <Image
+                  src={`/student_avatars/${file}`}
+                  alt=""
+                  fill
+                  sizes="38px"
+                  className="object-cover"
+                />
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute bottom-3 right-3 rounded-2xl bg-white px-4 py-3 text-xs text-ink shadow-xl sm:bottom-5 sm:right-5">
+          <p className="font-semibold">One Readiness Check</p>
+          <p className="text-ink-secondary">Before the invitation arrives</p>
+        </div>
       </div>
     </div>
   );

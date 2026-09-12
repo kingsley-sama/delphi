@@ -33,9 +33,18 @@ const marker = Permanent_Marker({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.delphieduhub.com"),
   title: "Delphi Education Hub — Personalized Online Tutoring",
   description:
     "Online tutoring and academic support services that help learners improve through teaching shaped around their needs and pace.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

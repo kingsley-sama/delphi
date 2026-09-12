@@ -5,14 +5,11 @@ import {
   BarChart3,
   BookOpen,
   Brain,
-  Briefcase,
   Calculator,
   CalendarDays,
   Check,
   ClipboardCheck,
-  Fuel,
   Handshake,
-  Landmark,
   Library,
   LineChart,
   Search,
@@ -22,20 +19,17 @@ import {
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ArrowCta } from "@/components/ui/ArrowCta";
-import { Faq } from "@/components/sections/Faq";
-import { BookCallButton } from "./BookCallButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Motion";
 import { cn } from "@/lib/cn";
 import { BootcampDetails } from "./BootcampDetails";
 import { Facilitators } from "./Facilitators";
-import { BootcampRegistration } from "./BootcampRegistration";
 import { BootcampHeroImage } from "./BootcampHeroImage";
 
 // Points at contact until the real assessment form exists. Change this one
 // constant and every CTA on the page follows.
 const ASSESSMENT_HREF = "/contact";
-/** The registration section lives on this page. */
-const REGISTER_HREF = "#register";
+const REGISTER_HREF =
+  "https://wa.me/2349167542539?text=Hello%20Delphi%20Education%20Hub%2C%0A%0AI%20would%20like%20to%20register%20for%20the%20Employment%20Prep%20Bootcamp.%0A%0AFull%20name%3A%0AEmail%20address%3A%0ACurrent%20occupation%2Fstatus%3A%0A%0AMy%20preferred%20payment%20option%20is%3A%0A%5B%20%5D%20%E2%82%A612%2C000%20per%20month%0A%5B%20%5D%20%E2%82%A630%2C000%20once%20for%20the%20full%20three%20months%0A%0APlease%20send%20me%20the%20payment%20and%20onboarding%20details.%20Thank%20you";
 
 export const metadata: Metadata = {
   title: "Employment Aptitude Test Bootcamp — Delphi Education Hub",
@@ -77,33 +71,20 @@ const coreSkills = [
     title: "Data Interpretation & Analysis",
     desc: "Tables, graphs, charts and extracting information quickly.",
   },
-  {
-    icon: Search,
-    title: "Speed Under Timing",
-    desc: "Most tests are as much about pace as accuracy. Timed mocks build the rhythm you need.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Mistake Diagnosis",
-    desc: "Knowing why an answer was wrong is what turns practice into an actual score improvement.",
-  },
 ];
 
 const sectors = [
   {
-    icon: Fuel,
     name: "Oil & Gas",
     image: "/employment-readiness/sectors/oil-gas.webp",
     imageAlt: "Oil and gas engineer inspecting refinery equipment",
   },
   {
-    icon: Briefcase,
     name: "Consulting",
     image: "/employment-readiness/sectors/consulting.webp",
     imageAlt: "Consultants collaborating on a strategy and data analysis project",
   },
   {
-    icon: Landmark,
     name: "Banking & Finance",
     image: "/employment-readiness/sectors/banking-finance.webp",
     imageAlt: "Finance professionals reviewing market and financial data",
@@ -136,6 +117,16 @@ const coreFeatures = [
     title: "Recruitment professionals interaction",
     desc: "Sessions with recruitment professionals who see these assessments from the hiring side.",
   },
+  {
+    icon: Search,
+    title: "Speed under timing",
+    desc: "Timed practice builds the pace and decision-making rhythm you need without sacrificing accuracy.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Mistake diagnosis",
+    desc: "Understand why an answer was wrong, correct the underlying skill and turn practice into score improvement.",
+  },
 ];
 
 const pricing = [
@@ -148,39 +139,10 @@ const pricing = [
   },
 ];
 
-const bootcampFaqs = [
-  {
-    q: "What is the free readiness assessment?",
-    a: "A 40-question check — 10 questions in each of the four core areas. It shows your current performance, your strongest areas, where you need work, and where to focus your preparation. You also get a free consultation call afterwards.",
-  },
-  {
-    q: "Do I need to be good at Maths?",
-    a: "No. Aptitude tests measure how quickly and accurately you understand information, identify patterns, work with numbers, interpret data and reach logical conclusions. Numerical reasoning is one of four areas, not the whole test.",
-  },
-  {
-    q: "How is this different from just practising questions?",
-    a: "Practising hundreds of random questions plateaus fast. The bootcamp is foundation-focused: it diagnoses which skill is costing you marks, fixes that skill, then retests — rather than preparing for all four areas the same way.",
-  },
-  {
-    q: "Are the classes live or recorded?",
-    a: "Classes are live and instructor-led, with recordings available afterwards so you can revisit anything you missed.",
-  },
-  {
-    q: "How long do I keep access?",
-    a: "You keep lifetime access to the aptitude-test preparation community until you are employed.",
-  },
-  {
-    q: "Is there a referral benefit?",
-    a: "Yes. Refer someone who registers and you receive 10% of your bootcamp payment.",
-  },
-];
-
 export default function BootcampPage() {
   return (
     <>
-      {/* Hero and facilitators share one deep green field so the colour runs
-          continuously between them. The gridlines belong to the hero alone and
-          dissolve before it ends, leaving the facilitators on flat green. */}
+      {/* Hero */}
       <div className="relative -mt-[var(--header-h)] overflow-hidden bg-[#012a17] pt-[var(--header-h)]">
         {/* Hero — the home page hero, colour-inverted onto the deep green. */}
         <section className="relative">
@@ -202,7 +164,7 @@ export default function BootcampPage() {
             className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#012a17] sm:h-56"
             aria-hidden
           />
-        <Container className="relative grid items-center gap-8 py-12 sm:py-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-2 lg:py-20">
+        <Container className="relative grid items-center gap-10 py-12 sm:py-14 lg:grid-cols-2 lg:gap-12 lg:py-20">
           <div className="text-center lg:text-left">
             <span className="inline-flex animate-fade-up items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[13px] font-semibold text-accent sm:gap-2.5 sm:px-5 sm:py-2.5 sm:text-sm">
               <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
@@ -244,6 +206,8 @@ export default function BootcampPage() {
               </ArrowCta>
               <a
                 href={REGISTER_HREF}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2.5 text-base font-medium text-white transition-colors hover:bg-white/10 sm:px-7 sm:py-3.5"
               >
                 Register for Bootcamp
@@ -254,8 +218,6 @@ export default function BootcampPage() {
           <BootcampHeroImage />
         </Container>
         </section>
-
-        <Facilitators />
       </div>
 
       {/* Sectors we prepare for, plus the headline duration. */}
@@ -286,10 +248,7 @@ export default function BootcampPage() {
                     aria-hidden
                   />
                 </div>
-                <div className="flex items-center gap-3 px-5 py-4 sm:px-5 sm:py-5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
-                    <sector.icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                  </span>
+                <div className="px-5 py-4 text-center sm:px-5 sm:py-5">
                   <p className="text-lg font-bold leading-tight text-ink sm:text-xl lg:text-2xl">
                     {sector.name}
                   </p>
@@ -310,8 +269,7 @@ export default function BootcampPage() {
         </Container>
       </section>
 
-      {/* Core skills use the same pale cards and dark-green icon tiles as the
-          sector cards above, keeping the page's visual language consistent. */}
+      {/* The four assessment areas use the page's original destination-card treatment. */}
       <section className="py-14 sm:py-20">
         <Container>
           <Reveal>
@@ -321,19 +279,18 @@ export default function BootcampPage() {
               subtitle="Think aptitude tests are just about being good at Maths? They're not. Four areas, four different skill sets — preparing for all of them the same way doesn't work."
             />
           </Reveal>
-          <RevealGroup className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-3">
+          <RevealGroup className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-4">
             {coreSkills.map((f) => (
               <RevealItem
                 key={f.title}
-                className="rounded-3xl border border-neutral-200 bg-primary-50 p-5 sm:p-7"
+                className="flex flex-col items-center rounded-3xl border border-neutral-200 bg-primary-50 px-3 py-6 text-center sm:px-6 sm:py-8"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
                   <f.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </span>
-                <h3 className="mt-4 text-base font-semibold text-ink sm:mt-5 sm:text-xl">
+                <h3 className="mt-4 text-base font-semibold text-ink sm:mt-5 sm:text-lg">
                   {f.title}
                 </h3>
-                <p className="mt-2 text-sm text-ink-secondary sm:text-base">{f.desc}</p>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -366,8 +323,15 @@ export default function BootcampPage() {
               </RevealItem>
             ))}
           </RevealGroup>
+          <Reveal className="mt-10 flex justify-center sm:mt-12">
+            <ArrowCta href={ASSESSMENT_HREF}>Take Free Readiness Test</ArrowCta>
+          </Reveal>
         </Container>
       </section>
+
+      <div className="bg-[#012a17]">
+        <Facilitators />
+      </div>
 
       {/* Pricing — the home page's curriculum card grid. */}
       <section className="py-14 sm:py-20">
@@ -418,7 +382,7 @@ export default function BootcampPage() {
                   {plan.note}
                 </p>
                 <div className="mt-7 flex justify-center">
-                  <ArrowCta href={ASSESSMENT_HREF} inverted={plan.featured}>
+                  <ArrowCta href={REGISTER_HREF} inverted={plan.featured}>
                     Register
                   </ArrowCta>
                 </div>
@@ -438,16 +402,8 @@ export default function BootcampPage() {
         </Container>
       </section>
 
-      <BootcampRegistration />
-
-      <BootcampDetails />
-
-      <Reveal>
-        <Faq items={bootcampFaqs} />
-      </Reveal>
-
-      {/* Closing CTA — the slot count is the urgency, so it leads. */}
-      <section className="bg-brand py-16 sm:py-24">
+      {/* Registration now opens a pre-filled WhatsApp conversation; there is no form. */}
+      <section id="register" className="scroll-mt-24 bg-brand py-16 sm:py-24">
         <RevealGroup className="mx-auto flex w-full max-w-[1312px] flex-col items-center px-6 text-center min-[400px]:px-7 sm:px-8">
           <RevealItem>
           <span className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-brand">
@@ -466,25 +422,20 @@ export default function BootcampPage() {
             the four core areas every graduate aptitude test measures.
           </p>
           </RevealItem>
-          <RevealItem className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
+          <RevealItem className="mt-9">
             <a
               href={REGISTER_HREF}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-base font-medium text-brand"
             >
-              Register Now
+              Register On WhatsApp
             </a>
-            <BookCallButton />
-          </RevealItem>
-          <RevealItem>
-          <a
-            href={ASSESSMENT_HREF}
-            className="mt-6 inline-block text-sm font-medium text-accent underline underline-offset-4"
-          >
-            Or take the free readiness test first
-          </a>
           </RevealItem>
         </RevealGroup>
       </section>
+
+      <BootcampDetails />
     </>
   );
 }

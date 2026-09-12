@@ -50,15 +50,43 @@ const groups = [
   },
 ];
 
+const faqs = [
+  {
+    q: "What is the free readiness assessment?",
+    a: "A 40-question check — 10 questions in each of the four core areas. It shows your current performance, your strongest areas, where you need work, and where to focus your preparation. You also get a free consultation call afterwards.",
+  },
+  {
+    q: "Do I need to be good at Maths?",
+    a: "No. Aptitude tests measure how quickly and accurately you understand information, identify patterns, work with numbers, interpret data and reach logical conclusions. Numerical reasoning is one of four areas, not the whole test.",
+  },
+  {
+    q: "How is this different from just practising questions?",
+    a: "Practising hundreds of random questions plateaus fast. The bootcamp diagnoses which skill is costing you marks, fixes that skill, then retests instead of treating all four areas the same way.",
+  },
+  {
+    q: "Are the classes live or recorded?",
+    a: "Classes are live and instructor-led, with recordings available afterwards so you can revisit anything you missed.",
+  },
+  {
+    q: "How long do I keep access?",
+    a: "You keep lifetime access to the aptitude-test preparation community until you are employed.",
+  },
+  {
+    q: "Is there a referral benefit?",
+    a: "Yes. Refer someone who registers and you receive 10% of your bootcamp payment.",
+  },
+];
+
 export function BootcampDetails() {
   const [open, setOpen] = useState(0);
+  const [faqOpen, setFaqOpen] = useState(0);
 
   return (
     <section className="bg-white py-14 sm:py-20">
       <Container>
         <Reveal>
           <SectionHeading
-            badge="What makes this different"
+            badge="What Makes This Different + FAQs"
             title="Build the skills behind the questions"
             subtitle="Don't just practise hundreds of questions. The bootcamp teaches the method first, then drills it."
           />
@@ -128,6 +156,49 @@ export function BootcampDetails() {
               />
             ))}
           </Reveal>
+        </div>
+
+        <div className="mt-14 border-t border-neutral-200 pt-12 sm:mt-20 sm:pt-16">
+          <Reveal>
+            <SectionHeading
+              badge="Need Help?"
+              title="Frequently Asked Questions"
+              subtitle="The practical details about the assessment, classes, access and support — all in one place."
+            />
+          </Reveal>
+          <RevealGroup className="mx-auto mt-8 flex max-w-4xl flex-col gap-3 sm:mt-12">
+            {faqs.map((item, i) => {
+              const isOpen = faqOpen === i;
+              return (
+                <RevealItem
+                  key={item.q}
+                  className="rounded-2xl border border-neutral-200 bg-primary-50 p-4 sm:p-5"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setFaqOpen(isOpen ? -1 : i)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-4 text-left"
+                  >
+                    <span className="text-base font-semibold text-ink sm:text-lg">{item.q}</span>
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand text-white">
+                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                    </span>
+                  </button>
+                  <div
+                    className={cn(
+                      "grid transition-all",
+                      isOpen ? "mt-3 grid-rows-[1fr]" : "grid-rows-[0fr]",
+                    )}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="text-sm text-ink-secondary sm:text-base">{item.a}</p>
+                    </div>
+                  </div>
+                </RevealItem>
+              );
+            })}
+          </RevealGroup>
         </div>
       </Container>
     </section>
