@@ -26,13 +26,13 @@ const facilitators: Facilitator[] = [
     name: "Olawale Ogundele",
     role: "Data Interpretation",
     credential: "First Class Statistics, UNILAG",
-    photo: "/facilitators/olawale-ogundele.webp",
+    photo: "/facilitators/similoluwa-oshode.webp",
   },
   {
     name: "Similoluwa Oshode",
     role: "Logical Reasoning",
     credential: "NHEF Scholar & First Class Civil Eng, UNILAG",
-    photo: "/facilitators/similoluwa-oshode.webp",
+    photo: "/facilitators/olawale-ogundele.webp",
   },
 ];
 

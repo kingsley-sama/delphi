@@ -279,7 +279,8 @@ export default function BootcampPage() {
         </Container>
       </section>
 
-      {/* Core skills — the home page's card grid, unchanged. */}
+      {/* Core skills use the same pale cards and dark-green icon tiles as the
+          sector cards above, keeping the page's visual language consistent. */}
       <section className="py-14 sm:py-20">
         <Container>
           <Reveal>
@@ -289,13 +290,13 @@ export default function BootcampPage() {
               subtitle="Think aptitude tests are just about being good at Maths? They're not. Four areas, four different skill sets — preparing for all of them the same way doesn't work."
             />
           </Reveal>
-          <RevealGroup className="mt-8 grid grid-cols-2 gap-4 sm:mt-12 sm:gap-5 lg:grid-cols-3">
+          <RevealGroup className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-3">
             {coreSkills.map((f) => (
               <RevealItem
                 key={f.title}
                 className="rounded-3xl border border-neutral-200 bg-primary-50 p-5 sm:p-7"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-200 text-brand sm:h-12 sm:w-12">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
                   <f.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </span>
                 <h3 className="mt-4 text-base font-semibold text-ink sm:mt-5 sm:text-xl">
@@ -324,7 +325,7 @@ export default function BootcampPage() {
                 key={f.title}
                 className="rounded-3xl border border-neutral-200 bg-primary-50 p-5 sm:p-7"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-200 text-brand sm:h-12 sm:w-12">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
                   <f.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </span>
                 <h3 className="mt-4 text-base font-semibold text-ink sm:mt-5 sm:text-xl">
