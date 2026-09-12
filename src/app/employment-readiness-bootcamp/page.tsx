@@ -307,16 +307,18 @@ export default function BootcampPage() {
               title="Let's Get You Closer To Your Dream Career In:"
             />
           </Reveal>
-          <RevealGroup className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-3 sm:gap-5">
+          <RevealGroup className="mt-8 grid grid-cols-3 gap-3 sm:mt-12 sm:gap-5">
             {sectors.map((sector) => (
               <RevealItem
                 key={sector.name}
-                className="flex flex-col items-center rounded-3xl border border-neutral-200 bg-primary-50 px-6 py-8 text-center"
+                className="flex flex-col items-center rounded-3xl border border-neutral-200 bg-primary-50 px-2 py-6 text-center sm:px-6 sm:py-8"
               >
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-accent">
-                  <sector.icon className="h-6 w-6" />
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-accent sm:h-14 sm:w-14">
+                  <sector.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </span>
-                <p className="mt-4 text-xl font-bold text-ink sm:text-2xl">{sector.name}</p>
+                <p className="mt-3 text-sm font-bold leading-tight text-ink sm:mt-4 sm:text-xl lg:text-2xl">
+                  {sector.name}
+                </p>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -372,7 +374,7 @@ export default function BootcampPage() {
               subtitle="Don't just practise hundreds of questions — build the skills behind them, with the support to keep going."
             />
           </Reveal>
-          <RevealGroup className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+          <RevealGroup className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {coreFeatures.map((f) => (
               <RevealItem
                 key={f.title}
