@@ -43,15 +43,14 @@ export function Facilitators() {
   const reduced = useReducedMotion();
 
   return (
-    // Transparent: the deep green field and its gridlines come from the shared
-    // wrapper this sits inside, so the lines run on unbroken from the hero.
+    // The page supplies the light field so this component can stay reusable.
     <section className="relative pb-20 pt-14 sm:pb-28 sm:pt-20">
       <Container className="text-center">
         <Reveal>
-        <h2 className="text-[38px] font-extrabold uppercase leading-[1.02] tracking-tight text-accent min-[400px]:text-[46px] sm:text-6xl lg:text-[76px]">
+        <h2 className="text-[38px] font-extrabold uppercase leading-[1.02] tracking-tight text-brand min-[400px]:text-[46px] sm:text-6xl lg:text-[76px]">
           Meet The Facilitators
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-[17px] text-white/70 sm:text-lg">
+        <p className="mx-auto mt-5 max-w-2xl text-[17px] text-ink-secondary sm:text-lg">
           The bootcamp is led by instructors who teach each core area deliberately — so
           you build the skill behind the question, not just the answer to it.
         </p>
@@ -87,9 +86,9 @@ export function Facilitators() {
                 />
               </div>
 
-              <h3 className="mt-4 text-lg font-semibold text-white">{person.name}</h3>
-              <p className="mt-1 text-sm font-medium text-accent">{person.role}</p>
-              <p className="mx-auto mt-2 max-w-[16rem] text-sm leading-relaxed text-white/75">
+              <h3 className="mt-4 text-lg font-semibold text-ink">{person.name}</h3>
+              <p className="mt-1 text-sm font-medium text-brand">{person.role}</p>
+              <p className="mx-auto mt-2 max-w-[16rem] text-sm leading-relaxed text-ink-secondary">
                 {person.credential}
               </p>
             </RevealItem>

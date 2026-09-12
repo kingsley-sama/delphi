@@ -221,19 +221,20 @@ export default function BootcampPage() {
       </div>
 
       {/* Sectors we prepare for, plus the headline duration. */}
-      <section className="py-14 sm:py-20">
+      <section className="bg-[#012a17] py-14 sm:py-20">
         <Container>
           <Reveal>
             <SectionHeading
               badge="Where This Takes You"
               title="Let's Get You Closer To Your Dream Career In:"
+              className="[&_h2]:text-white"
             />
           </Reveal>
           <RevealGroup className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-3 sm:gap-5">
             {sectors.map((sector) => (
               <RevealItem
                 key={sector.name}
-                className="group overflow-hidden rounded-3xl border border-neutral-200 bg-primary-50"
+                className="group overflow-hidden rounded-3xl border border-white/15 bg-white/[0.06]"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -249,7 +250,7 @@ export default function BootcampPage() {
                   />
                 </div>
                 <div className="px-5 py-4 text-center sm:px-5 sm:py-5">
-                  <p className="text-lg font-bold leading-tight text-ink sm:text-xl lg:text-2xl">
+                  <p className="text-lg font-bold leading-tight text-white sm:text-xl lg:text-2xl">
                     {sector.name}
                   </p>
                 </div>
@@ -257,8 +258,8 @@ export default function BootcampPage() {
             ))}
           </RevealGroup>
 
-          <Reveal className="mt-6 flex flex-col items-center gap-3 rounded-[24px] bg-brand px-6 py-6 text-center sm:flex-row sm:justify-center sm:gap-5 sm:text-left">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-accent">
+          <Reveal className="mt-6 flex flex-col items-center gap-3 rounded-[24px] border border-white/15 bg-white/[0.06] px-6 py-6 text-center sm:flex-row sm:justify-center sm:gap-5 sm:text-left">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent text-brand">
               <CalendarDays className="h-6 w-6" />
             </span>
             <p className="text-lg font-semibold text-white sm:text-xl">
@@ -329,7 +330,7 @@ export default function BootcampPage() {
         </Container>
       </section>
 
-      <div className="bg-[#012a17]">
+      <div className="bg-primary-50">
         <Facilitators />
       </div>
 
