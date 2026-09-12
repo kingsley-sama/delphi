@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
-import Image from "next/image";
 import {
   BarChart3,
   BookOpen,
@@ -16,7 +15,6 @@ import {
   Library,
   LineChart,
   Search,
-  Star,
   Users,
   Video,
 } from "lucide-react";
@@ -30,6 +28,7 @@ import { cn } from "@/lib/cn";
 import { BootcampDetails } from "./BootcampDetails";
 import { Facilitators } from "./Facilitators";
 import { BootcampRegistration } from "./BootcampRegistration";
+import { BootcampHeroImage } from "./BootcampHeroImage";
 
 // Points at contact until the real assessment form exists. Change this one
 // constant and every CTA on the page follows.
@@ -54,14 +53,6 @@ const headingParts = [
   { text: "Next", badge: true },
   { text: "Aptitude" },
   { text: "Test?" },
-];
-
-const studentAvatars = [
-  "31e5e75ccce0ff3b328f2dfe633a3f59b5c87078.jpg",
-  "8f3d3035ed5eb0e101990460570a7eafc7bb7436.jpg",
-  "b3e0541217db95984a1cece4123eeabb514b9d10.jpg",
-  "83482147ef4830f561369d37e208dae0ce795c3e.jpg",
-  "7f3ca6b90540dadaea9991e9ef4ad4e684584024.jpg",
 ];
 
 const coreSkills = [
@@ -244,54 +235,7 @@ export default function BootcampPage() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative -mx-2 aspect-[3/4] overflow-hidden rounded-[32px] bg-gradient-to-b from-white/[0.12] to-white/[0.04] sm:mx-auto sm:aspect-square sm:w-full sm:max-w-[520px] lg:mx-0 lg:ml-auto lg:max-w-[600px]">
-              <Image
-                src="/homepage_assets/delphi_hero.webp"
-                alt="Excited student holding a notebook and wearing a backpack"
-                fill
-                priority
-                sizes="(max-width: 1024px) 90vw, 520px"
-                quality={92}
-                className="object-cover object-[50%_100%] sm:translate-x-[7%] sm:translate-y-[1%] sm:object-contain sm:object-[35%_100%]"
-              />
-              <div className="absolute right-4 top-2 rounded-full bg-accent px-4 py-2 text-xs text-ink shadow-lg sm:top-4">
-                <p className="font-semibold">
-                  <span className="font-bold">40</span> questions
-                </p>
-              </div>
-              <div className="absolute right-4 top-16 flex w-[150px] flex-col items-start gap-2 rounded-2xl bg-white/90 px-2.5 py-2 text-[11px] text-ink shadow-lg backdrop-blur sm:top-16 sm:w-[205px] sm:gap-3 sm:px-3.5 sm:py-3 sm:text-xs">
-                <div className="flex gap-0.5 text-amber-400">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
-                  ))}
-                </div>
-                <p className="font-normal leading-snug">
-                  10 questions in each of the four core areas
-                </p>
-                <div className="flex -space-x-2.5 sm:-space-x-3">
-                  {studentAvatars.map((file) => (
-                    <span
-                      key={file}
-                      className="relative h-[28px] w-[28px] overflow-hidden rounded-full border-2 border-white sm:h-[42px] sm:w-[42px]"
-                    >
-                      <Image
-                        src={`/student_avatars/${file}`}
-                        alt=""
-                        fill
-                        sizes="42px"
-                        className="object-cover"
-                      />
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="absolute bottom-4 left-4 rounded-2xl bg-white/90 px-4 py-3 text-xs text-ink shadow-lg backdrop-blur">
-                <p className="font-semibold">One Readiness Check</p>
-                <p className="text-ink-secondary">Before the invitation arrives</p>
-              </div>
-            </div>
-          </div>
+          <BootcampHeroImage />
         </Container>
         </section>
 
