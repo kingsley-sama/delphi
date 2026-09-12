@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Motion";
+import { EASE, Reveal, RevealGroup, RevealItem } from "@/components/ui/Motion";
 
 type Facilitator = {
   name: string;
@@ -37,6 +40,8 @@ const facilitators: Facilitator[] = [
 ];
 
 export function Facilitators() {
+  const reduced = useReducedMotion();
+
   return (
     // Transparent: the deep green field and its gridlines come from the shared
     // wrapper this sits inside, so the lines run on unbroken from the hero.
@@ -57,15 +62,28 @@ export function Facilitators() {
           so a tighter gap goes straight into image width. */}
       <Container>
         <RevealGroup className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-4">
-          {facilitators.map((person) => (
-            <RevealItem key={person.name} className="group flex h-full flex-col text-center">
-              <div className="relative aspect-[5/6] overflow-hidden rounded-[24px] bg-neutral-100 ring-2 ring-transparent transition-all duration-300 group-hover:ring-accent">
+          {facilitators.map((person, index) => (
+            <RevealItem key={person.name} className="flex h-full flex-col text-center">
+              <div className="relative aspect-[5/6] overflow-hidden rounded-[24px] bg-neutral-100">
                 <Image
                   src={person.photo}
                   alt={`${person.name}, ${person.role} facilitator`}
                   fill
                   sizes="(max-width: 1024px) 50vw, 320px"
-                  className="object-cover object-top grayscale transition-all duration-300 group-hover:grayscale-0"
+                  className="object-cover object-top"
+                />
+                <motion.div
+                  className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  initial={reduced ? false : { x: "0%", opacity: 0 }}
+                  animate={{ x: "460%", opacity: reduced ? 0 : [0, 0.8, 0] }}
+                  transition={{
+                    duration: 1.45,
+                    delay: 0.45 + index * 0.3,
+                    ease: EASE,
+                    repeat: reduced ? 0 : Infinity,
+                    repeatDelay: 4.25,
+                  }}
+                  aria-hidden
                 />
               </div>
 

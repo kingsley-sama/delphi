@@ -202,7 +202,7 @@ export default function BootcampPage() {
             className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#012a17] sm:h-56"
             aria-hidden
           />
-        <Container className="relative grid items-center gap-8 py-12 sm:py-14 lg:grid-cols-[1fr_1.05fr] lg:gap-0 lg:py-20">
+        <Container className="relative grid items-center gap-8 py-12 sm:py-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-2 lg:py-20">
           <div className="text-center lg:text-left">
             <span className="inline-flex animate-fade-up items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[13px] font-semibold text-accent sm:gap-2.5 sm:px-5 sm:py-2.5 sm:text-sm">
               <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
