@@ -20,7 +20,7 @@ export function BootcampHeroImage() {
     <div className="relative mx-auto w-full max-w-[470px] lg:mx-0 lg:ml-auto">
       <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-white/5 shadow-[0_32px_90px_rgba(0,0,0,0.35)] ring-1 ring-white/15">
         <Image
-          src="/employment-readiness/three-key-sectors-portrait.webp"
+          src="/employment-readiness/hero.jpeg"
           alt="Professionals representing oil and gas, consulting, and banking and finance careers"
           fill
           priority
