@@ -22,6 +22,8 @@ export type Program = {
   badge: string;
   hero: string;
   heroSub: string;
+  heroImage?: string;
+  heroImageAlt?: string;
   image: string;
   overviewTitle: string;
   overviewBody: string;
@@ -130,6 +132,9 @@ export const programData: Record<string, Program> = {
     hero: "Guidance And Coaching For The Next Chapter",
     heroSub:
       "Professional learning, certification, workplace skills, and career development programs designed for long-term growth and advancement.",
+    heroImage: "/career/three-key-sectors.jpg",
+    heroImageAlt:
+      "Professionals representing engineering, business and corporate career paths",
     image: img("prog-career.webp"),
     overviewTitle: "Prepare for certifications and career growth",
     overviewBody:

@@ -14,6 +14,8 @@ export function ProgramTemplate({ program }: { program: Program }) {
         title={program.hero}
         subtitle={program.heroSub}
         cta={{ label: "Book a Free Call", href: "/contact" }}
+        image={program.heroImage}
+        imageAlt={program.heroImageAlt}
       />
       <ImageText
         badge="Overview"
