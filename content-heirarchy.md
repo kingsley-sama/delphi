@@ -2,7 +2,7 @@
 - where this takes you 
 - what you should prepare for : adopt the old where this takes you design here 
 - core features : move speed under testing and mistake diagnosis from what you should prepare for section . 
-- put the readiness test button after what you get
+- put the readiness test button after what you get 
 - meet the tutors 
 - pricing 
 - register 

@@ -27,9 +27,8 @@ import { BootcampDetails } from "./BootcampDetails";
 import { Facilitators } from "./Facilitators";
 import { BootcampHeroImage } from "./BootcampHeroImage";
 
-// Points at contact until the real assessment form exists. Change this one
-// constant and every CTA on the page follows.
-const ASSESSMENT_HREF = "/contact";
+const ASSESSMENT_HREF =
+  "https://script.google.com/macros/s/AKfycby4Tu6eyXJaA76MD34iPxkbhmLPXxtH0Mw6pA9tqFABu5UmDse93qeP-UngvyqW8X8e/exec";
 const REGISTER_HREF =
   "https://wa.me/2349167542539?text=Hello%20Delphi%20Education%20Hub%2C%0A%0AI%20would%20like%20to%20register%20for%20the%20Employment%20Prep%20Bootcamp.%0A%0AFull%20name%3A%0AEmail%20address%3A%0ACurrent%20occupation%2Fstatus%3A%0A%0AMy%20preferred%20payment%20option%20is%3A%0A%5B%20%5D%20%E2%82%A612%2C000%20per%20month%0A%5B%20%5D%20%E2%82%A630%2C000%20once%20for%20the%20full%20three%20months%0A%0APlease%20send%20me%20the%20payment%20and%20onboarding%20details.%20Thank%20you";
 
